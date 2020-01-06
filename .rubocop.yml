@@ -1,0 +1,40 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.7
+  TargetRailsVersion: 6.0
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - app/views/**/*
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 250
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

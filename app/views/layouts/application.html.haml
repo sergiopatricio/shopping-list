@@ -1,0 +1,17 @@
+- content_for :content do
+  %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-3
+    .container
+      = link_to 'Shopping list', root_path, class: 'navbar-brand'
+      %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#navbar-nav-alt-markup' }, aria: { controls: 'navbar-nav-alt-markup', expanded: 'false', label: 'Toggle navigation' } }
+        %span.navbar-toggler-icon
+      .navbar-collapse.collapse#navbar-nav-alt-markup
+        %ul.navbar-nav.mr-auto
+          %li-nav-item= link_to 'Menu 1', '#', class: 'nav-link'
+          %li-nav-item= link_to 'Menu 2', '#', class: 'nav-link'
+        %ul.navbar-nav
+          %li-nav-item= link_to 'Log out', destroy_user_session_path, class: 'nav-link', method: :delete
+
+  .container
+    = render partial: 'shared/flash'
+    = yield
+= render template: 'layouts/base'

@@ -1,0 +1,16 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'sign-in-form' }) do |form|
+  %h1 Log in
+  = render partial: 'shared/flash'
+
+  .form-group
+    = form.label :email
+    = form.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true
+  .form-group
+    = form.label :password
+    = form.password_field :password, autocomplete: 'current-password', class: 'form-control', required: true
+
+  .form-group.form-check
+    = form.check_box :remember_me, class: 'form-check-input'
+    = form.label :remember_me, class: 'form-check-label'
+
+  = form.submit 'Log in', class: 'btn btn-primary'
