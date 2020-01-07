@@ -1,0 +1,12 @@
+= form_with(model: group, local: true, class: 'edit-group') do |form|
+  = render 'shared/errors', errors: group.errors
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+
+  .form-group
+    = form.label :position
+    = form.number_field :position, class: 'form-control'
+
+  = form.submit class: 'btn btn-primary'

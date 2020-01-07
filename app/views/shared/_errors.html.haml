@@ -1,0 +1,6 @@
+- if errors.any?
+  .card.border-danger.mb-4
+    .card-header.bg-danger.text-white The following errors occurred:
+    %ul.list-group.list-group-flush
+      - errors.full_messages.each do |message|
+        %li.list-group-item= message
