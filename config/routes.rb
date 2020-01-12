@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :groups, except: :show
+  resources :items, except: :show
 end
