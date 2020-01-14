@@ -1,3 +1,15 @@
 .groups, .edit-group, .items, .edit-item {
   max-width: 30rem;
 }
+
+.shopping-cart {
+  max-width: 40rem;
+
+  .total {
+    width: 2rem;
+  }
+
+  .actions {
+    width: 6rem;
+  }
+}
