@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :groups, except: :show
   resources :items, except: :show
-  resource :shopping_cart, only: :show do
+  resource :shopping_cart, only: %i[show destroy] do
     put :add_item
     put :remove_item
   end

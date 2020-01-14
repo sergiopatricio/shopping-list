@@ -1,5 +1,7 @@
 %h1 Shopping cart
 
+= link_to 'Clear', shopping_cart_path, method: :delete, class: 'btn btn-secondary'
+
 - @grouped_items.each do |group|
   %h3.mt-3= group.name
   %ul.list-group.shopping-cart
