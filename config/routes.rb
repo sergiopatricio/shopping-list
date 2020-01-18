@@ -8,4 +8,8 @@ Rails.application.routes.draw do
     put :add_item
     put :remove_item
   end
+  resource :order, only: %i[show destroy] do
+    put :confirm_item
+    put :unconfirm_item
+  end
 end

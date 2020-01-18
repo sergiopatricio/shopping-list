@@ -4,7 +4,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def destroy
-    Item.update_all(total: 0)
+    Item.update_all(total: 0, confirmed: false)
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
 
