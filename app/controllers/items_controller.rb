@@ -6,7 +6,10 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new(group_id: params[:group_id])
+    @item = Item.new(
+      group_id: params[:group_id],
+      position: (Item.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
+    )
   end
 
   def edit; end
@@ -15,6 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
+      ItemOrderService.new.call(@item)
       redirect_to items_path, notice: 'Item was successfully created.'
     else
       render :new
@@ -23,6 +27,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      ItemOrderService.new.call(@item)
       redirect_to items_path, notice: 'Item was successfully updated.'
     else
       render :edit

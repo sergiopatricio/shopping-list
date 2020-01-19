@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new
+    @group = Group.new(position: (Group.maximum(:position) || 0) + 1)
   end
 
   def edit; end
@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
+      GroupOrderService.new.call(@group)
       redirect_to groups_path, notice: 'Group was successfully created.'
     else
       render :new
@@ -23,6 +24,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
+      GroupOrderService.new.call(@group)
       redirect_to groups_path, notice: 'Group was successfully updated.'
     else
       render :edit
