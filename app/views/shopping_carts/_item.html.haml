@@ -1,4 +1,4 @@
-%li.list-group-item.shopping-cart-item
+%li.list-group-item.shopping-cart-item{ class: item.total.positive? ? 'in-cart' : nil }
   .d-flex
     .flex-grow-1.align-self-center= item.name
     .align-self-center.total= item.total
