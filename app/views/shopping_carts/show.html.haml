@@ -6,5 +6,4 @@
   %h3.mt-3= group.name
   %ul.list-group.shopping-cart
     - group.items.each do |item|
-      %li.list-group-item.shopping-cart-item
-        = render 'item', item: item
+      = render 'item', item: item

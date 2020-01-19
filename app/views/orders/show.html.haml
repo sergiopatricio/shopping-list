@@ -5,8 +5,7 @@
 
   %ul.list-group.order-confirmation
     - @items.each do |item|
-      %li.list-group-item.order-confirmation-item{ class: item.confirmed ? 'confirmed' : nil }
-        = render 'item', item: item
+      = render 'item', item: item
 
 - else
   %p No items

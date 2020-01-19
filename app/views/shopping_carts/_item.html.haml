@@ -1,6 +1,7 @@
-.d-flex
-  .flex-grow-1.align-self-center= item.name
-  .align-self-center.total= item.total
-  .btn-group.actions{ role: 'group' }
-    = link_to '+', add_item_shopping_cart_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'
-    = link_to '-', remove_item_shopping_cart_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-warning action'
+%li.list-group-item.shopping-cart-item
+  .d-flex
+    .flex-grow-1.align-self-center= item.name
+    .align-self-center.total= item.total
+    .btn-group.actions{ role: 'group' }
+      = link_to '+', add_item_shopping_cart_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'
+      = link_to '-', remove_item_shopping_cart_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-warning action'
