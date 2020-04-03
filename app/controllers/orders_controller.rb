@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def show
-    @items = Item.to_buy.joins(:group).order('groups.position, items.position')
+    @items = Item::Base.to_buy.joins(:group).order('groups.position, items.position')
   end
 
   def destroy
-    Item.update_all(confirmed: false)
+    Item::Base.update_all(confirmed: false)
     redirect_to order_path, notice: 'Confirmations cleared.'
   end
 
@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   private
 
   def item
-    @item ||= Item.find(params[:item_id])
+    @item ||= Item::Base.find(params[:item_id])
   end
 
   def update_confirmation(confirmed)

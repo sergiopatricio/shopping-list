@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :groups, except: :show
-  resources :items, except: :show
+  resources :items, controller: 'items/base', only: %i[edit update destroy]
+  namespace :items do
+    resources :regulars, only: %i[index new create]
+  end
   resource :shopping_cart, only: %i[show destroy] do
     put :add_item
     put :remove_item

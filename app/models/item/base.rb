@@ -1,4 +1,6 @@
-class Item < ApplicationRecord
+class Item::Base < ApplicationRecord
+  self.table_name = 'items'
+
   belongs_to :group
 
   validates :name, presence: true, uniqueness: true

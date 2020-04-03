@@ -4,7 +4,7 @@ class ShoppingCartsController < ApplicationController
   end
 
   def destroy
-    Item.update_all(total: 0, confirmed: false)
+    Item::Base.update_all(total: 0, confirmed: false)
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
 
@@ -19,7 +19,7 @@ class ShoppingCartsController < ApplicationController
   private
 
   def item
-    @item ||= Item.find(params[:item_id])
+    @item ||= Item::Base.find(params[:item_id])
   end
 
   def update_item_total(increment)
