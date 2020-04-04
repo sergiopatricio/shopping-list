@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def show
-    @items = Item::Base.to_buy.joins(:group).order('groups.position, items.position')
+    @items = Item::Base.to_buy.joins(:group).order('groups.position, items.type, items.position')
   end
 
   def destroy

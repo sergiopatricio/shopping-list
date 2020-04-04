@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items, controller: 'items/base', only: %i[edit update destroy]
   namespace :items do
     resources :regulars, only: %i[index new create]
+    resources :temporaries, only: %i[new create]
   end
   resource :shopping_cart, only: %i[show destroy] do
     put :add_item

@@ -4,6 +4,21 @@
 
 - @grouped_items.each do |group|
   %h3.mt-3= group.name
-  %ul.list-group.shopping-cart
+  %ul.list-group.shopping-cart{ id: "shopping-cart-group-#{group.id}" }
     - group.items.each do |item|
       = render 'item', item: item
+
+  %button.btn.btn-secondary.mt-2{ type: 'button', data: { toggle: 'modal', target: '#add-temporary-item', new_item_path: new_items_temporary_path(group_id: group.id) } }
+    Add temporary item
+
+.modal#add-temporary-item{ tabindex: '-1', role: 'dialog' }
+  .modal-dialog.modal-dialog-centered{ role: 'document' }
+    .modal-content
+      .modal-header
+        %h5.modal-title Add temporary item
+        %button.close{ type: 'button', 'data-dismiss': 'modal' }
+          %span &times;
+      .modal-body
+        .text-center#add-temporary-item-loading
+          .spinner-border{ role: 'status' }
+        #add-temporary-item-content

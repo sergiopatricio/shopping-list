@@ -1,6 +1,8 @@
-%li.list-group-item.shopping-cart-item{ class: item.total.positive? ? 'in-cart' : nil }
+%li.list-group-item.shopping-cart-item{ class: item.total.positive? ? 'in-cart' : nil, data: { group_id: item.group_id } }
   .d-flex
-    .flex-grow-1.align-self-center= item.name
+    .flex-grow-1.align-self-center
+      = '(T)' if item.is_a?(Item::Temporary)
+      = item.name
     .align-self-center.total= item.total
     .btn-group.actions{ role: 'group' }
       = link_to '+', add_item_shopping_cart_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'

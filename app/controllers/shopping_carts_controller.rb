@@ -5,6 +5,7 @@ class ShoppingCartsController < ApplicationController
 
   def destroy
     Item::Base.update_all(total: 0, confirmed: false)
+    Item::Temporary.destroy_all
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
 

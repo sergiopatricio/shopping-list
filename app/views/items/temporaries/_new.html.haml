@@ -1,0 +1,12 @@
+= form_with(model: item, scope: :item, url: items_temporaries_path, class: 'add-temporary-item-form') do |form|
+  = render 'shared/errors', errors: item.errors
+
+  .form-group
+    = form.label :group_id
+    = form.collection_select :group_id, Group.order(:name).all, :id, :name, { prompt: true }, class: 'form-control'
+
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+
+  = form.submit 'Add', class: 'btn btn-primary'
