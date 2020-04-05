@@ -3,10 +3,6 @@ $(function() {
     $(this).closest('.shopping-cart-item').replaceWith(event.detail[0].html)
   });
 
-  $(document).on('ajax:success', '.order-confirmation-item .action', function(event) {
-    $(this).closest('.order-confirmation-item').replaceWith(event.detail[0].html)
-  });
-
   $('#add-temporary-item').on('show.bs.modal', function(event) {
     $.get($(event.relatedTarget).data('new-item-path'), function(data) {
       $('#add-temporary-item-loading').hide();

@@ -1,4 +1,6 @@
 class ShoppingCartsController < ApplicationController
+  before_action :use_controller_javascript
+
   def show
     @grouped_items = Group.includes(:items).order(:position)
   end

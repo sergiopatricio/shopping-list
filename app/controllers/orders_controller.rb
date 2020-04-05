@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :use_controller_javascript
+
   def show
     @items = if params[:sort] == 'name'
                Item::Base.to_buy.order(:name)
