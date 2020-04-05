@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   def show
-    @items = Item::Base.to_buy.joins(:group).order('groups.position, items.type, items.position')
+    @items = if params[:sort] == 'name'
+               Item::Base.to_buy.order(:name)
+             else
+               Item::Base.to_buy.joins(:group).order('groups.position, items.type, items.position')
+             end
   end
 
   def destroy
