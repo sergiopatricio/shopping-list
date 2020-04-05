@@ -1,7 +1,7 @@
 %h1 Order confirmation
 
 - if @items.any?
-  %p= link_to 'Clear confirmations', order_path, method: :delete, class: 'btn btn-secondary'
+  %p= link_to 'Clear confirmations', order_path, method: :delete, class: 'btn btn-danger'
 
   %ul.list-group.order-confirmation
     - @items.each do |item|
