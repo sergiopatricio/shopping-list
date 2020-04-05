@@ -1,5 +1,9 @@
 %h1 Shopping cart
 
+.alert.alert-secondary
+  Update the shopping cart with the quantities you need. You can also add temporary items just for this time.
+  When finished, go to #{link_to('order confirmation', order_path)} to make your order.
+
 = link_to 'Clear', shopping_cart_path, method: :delete, class: 'btn btn-danger'
 
 - @grouped_items.each do |group|
