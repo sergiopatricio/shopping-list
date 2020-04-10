@@ -10,6 +10,6 @@
         .flex-grow-1.align-self-center= group.name
         .btn-group{ role: 'group' }
           = link_to 'Edit', edit_group_path(group), class: 'btn btn-secondary'
-          = link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary'
+          = link_to 'Delete', group, method: :delete, data: { confirm: 'Delete the group?' }, class: 'btn btn-secondary'
 
 %p.mt-3= link_to 'New group', new_group_path, class: 'btn btn-primary'
