@@ -1,10 +1,14 @@
 class Items::BaseController < ApplicationController
+  include GroupOwnership
+
   before_action :set_item, only: %i[edit update destroy]
 
   def edit; end
 
   def update
-    if @item.update(item_params)
+    @item.assign_attributes(item_params)
+    check_group_ownership(@item)
+    if @item.save
       ItemOrderService.new.call(@item)
       redirect_to items_path(@item), notice: 'Item was successfully updated.'
     else
@@ -20,7 +24,7 @@ class Items::BaseController < ApplicationController
   private
 
   def set_item
-    @item = Item::Base.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   def item_params

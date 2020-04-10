@@ -1,17 +1,21 @@
 class Items::RegularsController < ApplicationController
+  include GroupOwnership
+
   def index
-    @grouped_items = Group.includes(:regular_items).order(:position)
+    @grouped_items = current_user.groups.includes(:regular_items).order(:position)
   end
 
   def new
-    @item = Item::Regular.new(
+    @item = current_user.regular_items.new(
       group_id: params[:group_id],
-      position: (Item::Regular.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
+      position: (current_user.regular_items.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
     )
+    check_group_ownership(@item)
   end
 
   def create
-    @item = Item::Regular.new(item_params)
+    @item = current_user.regular_items.new(item_params)
+    check_group_ownership(@item)
 
     if @item.save
       ItemOrderService.new.call(@item)

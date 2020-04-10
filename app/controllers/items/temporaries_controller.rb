@@ -1,13 +1,17 @@
 class Items::TemporariesController < ApplicationController
+  include GroupOwnership
+
   def new
-    item = Item::Temporary.new(group_id: params[:group_id])
+    item = current_user.temporary_items.new(group_id: params[:group_id])
+    check_group_ownership(item)
     render json: { html: render_to_string(partial: 'items/temporaries/new', locals: { item: item }) }
   end
 
   def create
-    item = Item::Temporary.new(item_params)
+    item = current_user.temporary_items.new(item_params)
+    check_group_ownership(item)
     item.total = 1 # add one unit by default
-    item.position = (Item::Temporary.where(group_id: item.group_id).maximum(:position) || 0) + 1
+    item.position = (current_user.temporary_items.where(group_id: item.group_id).maximum(:position) || 0) + 1
 
     if item.save
       render json: { html: render_to_string(partial: 'shopping_carts/item', locals: { item: item }) }

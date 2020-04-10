@@ -3,14 +3,14 @@ class OrdersController < ApplicationController
 
   def show
     @items = if params[:sort] == 'name'
-               Item::Base.to_buy.order(:name)
+               current_user.items.to_buy.order(:name)
              else
-               Item::Base.to_buy.joins(:group).order('groups.position, items.type, items.position')
+               current_user.items.to_buy.joins(:group).order('groups.position, items.type, items.position')
              end
   end
 
   def destroy
-    Item::Base.update_all(confirmed: false)
+    current_user.items.update_all(confirmed: false)
     redirect_to order_path, notice: 'Confirmations cleared.'
   end
 
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   private
 
   def item
-    @item ||= Item::Base.find(params[:item_id])
+    @item ||= current_user.items.find(params[:item_id])
   end
 
   def update_confirmation(confirmed)

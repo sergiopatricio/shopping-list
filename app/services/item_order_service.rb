@@ -4,8 +4,8 @@ class ItemOrderService
     return unless positioned_item.is_a?(Item::Regular)
 
     index = positioned_item.position
-    items = Item::Regular.where(group_id: positioned_item.group_id).where.not(id: positioned_item.id)
-    items.where('position >= ?', index).order(:position).each do |item|
+    items = positioned_item.user.regular_items.where(group_id: positioned_item.group_id)
+    items.where.not(id: positioned_item.id).where('position >= ?', index).order(:position).each do |item|
       index += 1
       item.update!(position: index)
     end

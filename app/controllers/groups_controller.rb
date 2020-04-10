@@ -2,17 +2,17 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[edit update destroy]
 
   def index
-    @groups = Group.order(:position).all
+    @groups = current_user.groups.order(:position).all
   end
 
   def new
-    @group = Group.new(position: (Group.maximum(:position) || 0) + 1)
+    @group = current_user.groups.new(position: (current_user.groups.maximum(:position) || 0) + 1)
   end
 
   def edit; end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.new(group_params)
 
     if @group.save
       GroupOrderService.new.call(@group)
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = current_user.groups.find(params[:id])
   end
 
   def group_params

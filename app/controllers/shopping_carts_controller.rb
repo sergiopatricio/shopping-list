@@ -2,12 +2,12 @@ class ShoppingCartsController < ApplicationController
   before_action :use_controller_javascript
 
   def show
-    @grouped_items = Group.includes(:items).order(:position)
+    @grouped_items = current_user.groups.includes(:items).order(:position)
   end
 
   def destroy
-    Item::Base.update_all(total: 0, confirmed: false)
-    Item::Temporary.destroy_all
+    current_user.items.update_all(total: 0, confirmed: false)
+    current_user.temporary_items.destroy_all
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
 
@@ -22,7 +22,7 @@ class ShoppingCartsController < ApplicationController
   private
 
   def item
-    @item ||= Item::Base.find(params[:item_id])
+    @item ||= current_user.items.find(params[:item_id])
   end
 
   def update_item_total(increment)
