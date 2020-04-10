@@ -1,4 +1,4 @@
-= form_with(model: item, scope: :item, url: items_temporaries_path, class: 'add-temporary-item-form') do |form|
+= form_with(model: item, scope: :item, url: items_temporaries_path, class: 'add-temporary-item-form', html: { autocomplete: 'off' }) do |form|
   = render 'shared/errors', errors: item.errors
 
   .form-group
