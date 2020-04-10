@@ -10,31 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_181138) do
+ActiveRecord::Schema.define(version: 2020_04_10_155707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["user_id", "name"], name: "index_groups_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
-    t.bigint "group_id"
-    t.string "name"
+    t.bigint "group_id", null: false
+    t.string "name", null: false
     t.integer "position"
     t.integer "total", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "confirmed", default: false
     t.string "type", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["group_id"], name: "index_items_on_group_id"
     t.index ["user_id", "name"], name: "index_items_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_items_on_user_id"
