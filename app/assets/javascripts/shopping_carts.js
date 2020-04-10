@@ -7,6 +7,7 @@ $(function() {
     $.get($(event.relatedTarget).data('new-item-path'), function(data) {
       $('#add-temporary-item-loading').hide();
       $('#add-temporary-item-content').html(data.html);
+      $('#item_name').trigger('focus');
     }).fail(function() {
       $('#add-temporary-item-loading').hide();
       $('#add-temporary-item-content').html('Error');
