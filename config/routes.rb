@@ -16,4 +16,9 @@ Rails.application.routes.draw do
     put :confirm_item
     put :unconfirm_item
   end
+  resource :user, only: %i[edit update] do
+    collection do
+      patch :update_password
+    end
+  end
 end

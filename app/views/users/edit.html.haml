@@ -1,0 +1,24 @@
+%h1 User details
+.user-edit
+  = render 'shared/errors', errors: @user.errors
+
+= form_with(model: @user, local: true, class: 'user-edit') do |form|
+  .form-group
+    = form.label :email
+    = form.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true
+
+  = form.submit 'Update', class: 'btn btn-primary'
+
+%h3.mt-5 Change password
+= form_with(model: @user, url: update_password_user_path, local: true, class: 'user-edit') do |form|
+  .form-group
+    = form.label :current_password
+    = form.password_field :current_password, autocomplete: 'current-password', class: 'form-control', required: true
+  .form-group
+    = form.label :password
+    = form.password_field :password, autocomplete: 'new-password', class: 'form-control', required: true
+  .form-group
+    = form.label :password_confirmation
+    = form.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control', required: true
+
+  = form.submit 'Update password', class: 'btn btn-primary'
