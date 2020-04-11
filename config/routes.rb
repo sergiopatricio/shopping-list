@@ -16,8 +16,7 @@ Rails.application.routes.draw do
     resources :items, only: :update, controller: 'shopping_carts/items'
   end
   resource :order, only: %i[show destroy] do
-    put :confirm_item
-    put :unconfirm_item
+    resources :items, only: :update, controller: 'orders/items'
   end
   resource :user, only: %i[edit update] do
     collection do

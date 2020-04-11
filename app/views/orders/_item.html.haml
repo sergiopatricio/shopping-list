@@ -6,6 +6,6 @@
     .align-self-center.total= item.total
     .align-self-center
       - if item.confirmed
-        = link_to 'Unconfirm', unconfirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-warning action'
+        = link_to 'Unconfirm', order_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=false' }, class: 'btn btn-warning action'
       - else
-        = link_to 'Confirm', confirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'
+        = link_to 'Confirm', order_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=true' }, class: 'btn btn-primary action'
