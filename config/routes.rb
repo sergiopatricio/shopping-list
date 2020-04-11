@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root 'home#index'
 
-  resources :groups, except: :show
+  resources :groups, except: :show do
+    member do
+      patch :status
+    end
+  end
   resources :items, controller: 'items/base', only: %i[edit update destroy]
   namespace :items do
     resources :regulars, only: %i[index new create]

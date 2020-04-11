@@ -3,16 +3,16 @@
 .alert.alert-secondary
   Confirm the items you have added to your purchase.
 
-- if @items.any?
-  %p= link_to 'Clear all confirmations', order_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Unconfirm all items?' }
-  %p
-    - sorted_by_name = params[:sort] == 'name'
-    = link_to 'Sort by group', order_path(sort: 'group'), class: "btn #{sorted_by_name ? 'btn-outline-info' : 'btn-info'}"
-    = link_to 'Sort by name', order_path(sort: 'name'), class: "btn #{sorted_by_name ? 'btn-info' : 'btn-outline-info'}"
+%p= link_to 'Clear all confirmations', order_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Unconfirm all items?' }
+%p
+  - sorted_by_name = params[:sort] == 'name'
+  = link_to 'Sort by group', order_path(sort: 'group'), class: "btn #{sorted_by_name ? 'btn-outline-info' : 'btn-info'}"
+  = link_to 'Sort by name', order_path(sort: 'name'), class: "btn #{sorted_by_name ? 'btn-info' : 'btn-outline-info'}"
+= render partial: 'groups/status_list'
 
+- if @items.any?
   %ul.list-group.order-confirmation
     - @items.each do |item|
       = render 'item', item: item
-
 - else
   %p No items

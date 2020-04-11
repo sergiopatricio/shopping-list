@@ -4,7 +4,8 @@
   Update the shopping cart with the quantities you need. You can also add temporary items just for this time.
   When finished, go to #{link_to('order confirmation', order_path)} to make your order.
 
-= link_to 'Clear shopping cart', shopping_cart_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
+%p= link_to 'Clear shopping cart', shopping_cart_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
+= render partial: 'groups/status_list'
 
 - @grouped_items.each do |group|
   %h3.mt-3= group.name
