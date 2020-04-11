@@ -18,25 +18,4 @@ class ShoppingCartsController < ApplicationController
 
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
-
-  def add_item
-    update_item_total(1)
-  end
-
-  def remove_item
-    update_item_total(-1)
-  end
-
-  private
-
-  def item
-    @item ||= current_user.items.find(params[:item_id])
-  end
-
-  def update_item_total(increment)
-    item.total += increment
-    item.restore_attributes unless item.save
-
-    render json: { html: render_to_string(partial: 'shopping_carts/item', locals: { item: item }) }
-  end
 end

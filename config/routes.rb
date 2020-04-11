@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :temporaries, only: %i[new create]
   end
   resource :shopping_cart, only: %i[show destroy] do
-    put :add_item
-    put :remove_item
+    resources :items, only: :update, controller: 'shopping_carts/items'
   end
   resource :order, only: %i[show destroy] do
     put :confirm_item
