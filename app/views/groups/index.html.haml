@@ -1,7 +1,8 @@
 %h1 Groups
 
 .alert.alert-secondary
-  Use groups to organise your #{link_to('items', items_regulars_path)} (e.g. bathroom, kitchen, etc.).
+  Use groups to organise your #{link_to('items', items_regulars_path)} by house sections (e.g. bathroom, kitchen, etc.),
+  or to create separate lists.
 
 %ul.list-group.groups
   - @groups.each do |group|
