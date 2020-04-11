@@ -6,8 +6,16 @@ class ShoppingCartsController < ApplicationController
   end
 
   def destroy
-    current_user.items.update_all(total: 0, confirmed: false)
-    current_user.temporary_items.destroy_all
+    group_id = params[:group_id]
+
+    temporary_items = current_user.temporary_items
+    temporary_items = temporary_items.where(group_id: group_id) if group_id
+    temporary_items.destroy_all
+
+    items = current_user.items
+    items = items.where(group_id: group_id) if group_id
+    items.update_all(total: 0, confirmed: false)
+
     redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
   end
 

@@ -8,11 +8,13 @@
 
 - @grouped_items.each do |group|
   %h3.mt-3= group.name
+  %p= link_to 'Clear', shopping_cart_path(group_id: group.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Reset all quantities and remove temporary items on group?' }
+
   %ul.list-group.shopping-cart{ id: "shopping-cart-group-#{group.id}" }
     - group.items.each do |item|
       = render 'item', item: item
 
-  %button.btn.btn-primary.mt-2{ type: 'button', data: { toggle: 'modal', target: '#add-temporary-item', new_item_path: new_items_temporary_path(group_id: group.id) } }
+  %button.btn.btn-primary.btn-sm.mt-2{ type: 'button', data: { toggle: 'modal', target: '#add-temporary-item', new_item_path: new_items_temporary_path(group_id: group.id) } }
     Add temporary item
 
 .modal#add-temporary-item{ tabindex: '-1', role: 'dialog' }
