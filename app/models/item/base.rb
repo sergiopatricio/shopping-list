@@ -4,7 +4,7 @@ class Item::Base < ApplicationRecord
   belongs_to :user
   belongs_to :group
 
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true, uniqueness: { scope: :group_id }
   validates :position, presence: true
   validates :total, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_same_user_on_item_and_group
