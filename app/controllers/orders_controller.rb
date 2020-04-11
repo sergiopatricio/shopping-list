@@ -2,10 +2,11 @@ class OrdersController < ApplicationController
   before_action :use_controller_javascript
 
   def show
+    items = current_user.items.to_buy.includes(:group)
     @items = if params[:sort] == 'name'
-               current_user.items.to_buy.order(:name)
+               items.order(:name)
              else
-               current_user.items.to_buy.joins(:group).order('groups.position, items.type, items.position')
+               items.order('groups.position, items.type, items.position')
              end
   end
 

@@ -1,8 +1,11 @@
 %li.list-group-item.order-confirmation-item{ class: item.confirmed ? 'confirmed' : nil }
   .d-flex
-    .flex-grow-1.align-self-center= item.name
+    .flex-grow-1.align-self-center
+      = item.name
+      %span.item-group= item.group.name
     .align-self-center.total= item.total
-    - if item.confirmed
-      = link_to 'Unconfirm', unconfirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-warning action'
-    - else
-      = link_to 'Confirm', confirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'
+    .align-self-center
+      - if item.confirmed
+        = link_to 'Unconfirm', unconfirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-warning action'
+      - else
+        = link_to 'Confirm', confirm_item_order_path(item_id: item.id), method: :put, remote: true, class: 'btn btn-primary action'
