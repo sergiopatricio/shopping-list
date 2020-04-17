@@ -14,6 +14,7 @@ gem 'hamlit', '~> 2.11.0'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails', '~> 4.3.5'
 gem 'devise', '~> 4.7.1'
+gem 'airbrake', '~> 10.0.2'
 
 group :development, :test do
   # gem 'byebug'
