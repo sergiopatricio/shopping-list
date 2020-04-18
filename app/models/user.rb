@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :temporary_items, class_name: 'Item::Temporary', dependent: :destroy
 
   validates :email, email: true, uniqueness: true
+
+  # enable devise "remember be" by default
+  def remember_me
+    true
+  end
 end
