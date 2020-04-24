@@ -1,5 +1,5 @@
 %p
-  Temporary items are removed when the shopping cart is cleared.
+  Temporary items are removed when the shopping list is cleared.
   Create a regular #{link_to('item', items_regulars_path)} if you want to keep it forever.
 
 = form_with(model: item, scope: :item, url: items_temporaries_path, class: 'add-temporary-item-form', html: { autocomplete: 'off' }) do |form|

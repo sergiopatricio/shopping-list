@@ -1,6 +1,6 @@
 $(function() {
-  $(document).on('ajax:success', '.shopping-cart-item .action', function(event) {
-    $(this).closest('.shopping-cart-item').replaceWith(event.detail[0].html)
+  $(document).on('ajax:success', '.shopping-list-item .action', function(event) {
+    $(this).closest('.shopping-list-item').replaceWith(event.detail[0].html)
   });
 
   $('#add-temporary-item').on('show.bs.modal', function(event) {
@@ -22,7 +22,7 @@ $(function() {
   $(document).on('ajax:success', '.add-temporary-item-form', function(event) {
     var itemContent = $(event.detail[0].html);
 
-    $('#shopping-cart-group-' + itemContent.data('group-id')).append(itemContent);
+    $('#shopping-list-group-' + itemContent.data('group-id')).append(itemContent);
     $('#add-temporary-item').modal('hide')
   });
 

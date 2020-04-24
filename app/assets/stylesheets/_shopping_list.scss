@@ -2,7 +2,7 @@
   max-width: 30rem;
 }
 
-.shopping-cart, .order-confirmation {
+.shopping-list, .order-confirmation {
   max-width: 40rem;
 
   .total {
@@ -14,8 +14,8 @@
   }
 }
 
-.shopping-cart {
-  .in-cart {
+.shopping-list {
+  .to-buy {
     background-color: #ebf5eb;
   }
 }

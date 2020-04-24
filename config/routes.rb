@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :regulars, only: %i[index new create]
     resources :temporaries, only: %i[new create]
   end
-  resource :shopping_cart, only: %i[show destroy] do
-    resources :items, only: :update, controller: 'shopping_carts/items'
+  resource :shopping_list, only: %i[show destroy] do
+    resources :items, only: :update, controller: 'shopping_lists/items'
   end
   resource :order, only: %i[show destroy] do
     resources :items, only: :update, controller: 'orders/items'

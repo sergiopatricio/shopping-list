@@ -1,4 +1,4 @@
-class ShoppingCartsController < ApplicationController
+class ShoppingListsController < ApplicationController
   before_action :use_controller_javascript
 
   def show
@@ -16,6 +16,6 @@ class ShoppingCartsController < ApplicationController
     items = items.where(group_id: group_id) if group_id
     items.update_all(total: 0, confirmed: false)
 
-    redirect_to shopping_cart_path, notice: 'Shopping cart cleared.'
+    redirect_to shopping_list_path, notice: 'Shopping list cleared.'
   end
 end

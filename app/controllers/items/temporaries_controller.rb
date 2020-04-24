@@ -14,7 +14,7 @@ class Items::TemporariesController < ApplicationController
     item.position = (current_user.temporary_items.where(group_id: item.group_id).maximum(:position) || 0) + 1
 
     if item.save
-      render json: { html: render_to_string(partial: 'shopping_carts/item', locals: { item: item }) }
+      render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
     else
       render json: { html: render_to_string(partial: 'items/temporaries/new', locals: { item: item }) },
              status: :bad_request

@@ -1,17 +1,17 @@
-%h1 Shopping cart
+%h1 Shopping list
 
 .alert.alert-secondary
-  Update the shopping cart with the quantities you need. You can also add temporary items just for this time.
+  Update the shopping list with the quantities you need. You can also add temporary items just for this time.
   When finished, go to #{link_to('order confirmation', order_path)} to make your order.
 
-%p= link_to 'Clear shopping cart', shopping_cart_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
+%p= link_to 'Clear shopping list', shopping_list_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
 = render partial: 'groups/status_list'
 
 - @grouped_items.each do |group|
   %h3.mt-3= group.name
-  %p= link_to 'Clear', shopping_cart_path(group_id: group.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Reset all quantities and remove temporary items on group?' }
+  %p= link_to 'Clear', shopping_list_path(group_id: group.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Reset all quantities and remove temporary items on group?' }
 
-  %ul.list-group.shopping-cart{ id: "shopping-cart-group-#{group.id}" }
+  %ul.list-group.shopping-list{ id: "shopping-list-group-#{group.id}" }
     - group.items.each do |item|
       = render 'item', item: item
 
