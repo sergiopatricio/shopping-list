@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  root 'home#index'
+  root 'shopping_lists#show'
 
-  resource :shopping_list, only: %i[show destroy]
+  resource :shopping_list, only: %i[show destroy], path: '/'
   namespace :shopping_list do
     resources :items, only: :update
   end
@@ -27,4 +27,7 @@ Rails.application.routes.draw do
       patch :update_password
     end
   end
+
+  get '/shopping_list', to: redirect('/')
+  get '/shopping_cart', to: redirect('/')
 end
