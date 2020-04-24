@@ -1,7 +1,7 @@
 %h1 Regular items
 
 .alert.alert-secondary
-  Add the regular items you usually need, organised by #{link_to('groups', groups_path)}.
+  Add the regular items usually needed, organised by #{link_to('groups', groups_path)}.
 
 - if @grouped_items.empty?
   %p.mt-3= link_to 'New item', new_items_regular_path, class: 'btn btn-primary'

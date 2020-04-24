@@ -1,8 +1,8 @@
 %h1 Shopping list
 
 .alert.alert-secondary
-  Update the shopping list with the quantities you need. You can also add temporary items just for this time.
-  When finished, go to #{link_to('order confirmation', order_path)} to make your order.
+  Update the quantities needed. Temporary items can be added just for this time.
+  Go to #{link_to('order confirmation', order_path)} when doing the final purchase.
 
 %p= link_to 'Clear shopping list', shopping_list_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
 = render partial: 'groups/status_list'

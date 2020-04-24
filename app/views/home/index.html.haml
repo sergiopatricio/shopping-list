@@ -2,7 +2,7 @@
 = link_to 'Order confirmation', order_path, class: 'btn btn-primary btn-lg m-2'
 
 .alert.alert-secondary.mt-5
-  %p Start by creating #{link_to('groups', groups_path)} to organise your #{link_to('items', items_regulars_path)}.
+  %p Start by creating #{link_to('groups', groups_path)} to organise #{link_to('items', items_regulars_path)}.
   %p.mb-0
-    Go to your #{link_to('shopping list', shopping_list_path)} to update the list of items you need.
-    When finished, go to #{link_to('order confirmation', order_path)} to make your order.
+    Go to the #{link_to('shopping list', shopping_list_path)} to update items needed.
+    Go to #{link_to('order confirmation', order_path)} when doing the final purchase.
