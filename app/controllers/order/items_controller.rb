@@ -1,4 +1,4 @@
-class Orders::ItemsController < ApplicationController
+class Order::ItemsController < ApplicationController
   def update
     item = current_user.items.find(params[:id])
     item.confirmed = params[:confirmed]

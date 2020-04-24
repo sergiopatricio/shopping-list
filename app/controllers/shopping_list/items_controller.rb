@@ -1,4 +1,4 @@
-class ShoppingLists::ItemsController < ApplicationController
+class ShoppingList::ItemsController < ApplicationController
   def update
     item = current_user.items.find(params[:id])
     item.total = params[:total]

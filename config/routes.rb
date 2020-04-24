@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root 'home#index'
 
+  resource :shopping_list, only: %i[show destroy]
+  namespace :shopping_list do
+    resources :items, only: :update
+  end
+  resource :order, only: %i[show destroy]
+  namespace :order do
+    resources :items, only: :update
+  end
+
   resources :groups, except: :show do
     member do
       patch :status
@@ -12,12 +21,7 @@ Rails.application.routes.draw do
     resources :regulars, only: %i[index new create]
     resources :temporaries, only: %i[new create]
   end
-  resource :shopping_list, only: %i[show destroy] do
-    resources :items, only: :update, controller: 'shopping_lists/items'
-  end
-  resource :order, only: %i[show destroy] do
-    resources :items, only: :update, controller: 'orders/items'
-  end
+
   resource :user, only: %i[edit update] do
     collection do
       patch :update_password
