@@ -9,7 +9,7 @@
     %li.list-group-item
       .d-flex
         .flex-grow-1.align-self-center= group.name
-        .btn-group{ role: 'group' }
+        .btn-group.align-self-center{ role: 'group' }
           = link_to 'Edit', edit_group_path(group), class: 'btn btn-secondary'
           = link_to 'Delete', group, method: :delete, data: { confirm: 'Delete the group?' }, class: 'btn btn-secondary'
 
