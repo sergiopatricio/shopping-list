@@ -10,7 +10,7 @@ Airbrake.configure do |c|
   c.logger = Airbrake::Rails.logger
   c.environment = Rails.env
   c.ignore_environments = %w[test development]
-  c.blacklist_keys = [/password/i, /authorization/i]
+  c.blocklist_keys = [/password/i, /authorization/i]
 end
 
 Airbrake.add_filter do |notice|
