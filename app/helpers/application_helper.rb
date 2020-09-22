@@ -1,10 +1,12 @@
 module ApplicationHelper
+  FLASH_CLASSES = {
+    'notice' => 'alert alert-primary',
+    'success' => 'alert alert-success',
+    'error' => 'alert alert-danger',
+    'alert' => 'alert alert-warning'
+  }.freeze
+
   def flash_class(name)
-    case name
-    when 'notice' then 'alert alert-primary'
-    when 'success' then 'alert alert-success'
-    when 'error' then 'alert alert-danger'
-    when 'alert' then 'alert alert-warning'
-    end
+    FLASH_CLASSES[name]
   end
 end
