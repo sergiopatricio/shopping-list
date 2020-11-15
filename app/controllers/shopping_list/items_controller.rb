@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShoppingList::ItemsController < ApplicationController
   def update
     item = current_user.items.find(params[:id])

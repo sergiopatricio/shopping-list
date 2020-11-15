@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupOrderService
   def call(positioned_group)
     index = positioned_group.position

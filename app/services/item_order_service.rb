@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemOrderService
   def call(positioned_item)
     # only sort regular items for now

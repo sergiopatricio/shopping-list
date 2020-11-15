@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 user = User.create!(email: 'user@test.com', password: 'user@test.com')
 
 group1 = user.groups.create!(position: 1, name: 'List A')

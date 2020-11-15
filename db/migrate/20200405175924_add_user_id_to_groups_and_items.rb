@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserIdToGroupsAndItems < ActiveRecord::Migration[6.0]
   def change
     add_belongs_to :groups, :user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Group < ApplicationRecord
   belongs_to :user
   has_many :items, -> { order(:type, :position) }, class_name: 'Item::Base', inverse_of: :group, dependent: :destroy

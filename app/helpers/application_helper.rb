@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   FLASH_CLASSES = {
     'notice' => 'alert alert-primary',

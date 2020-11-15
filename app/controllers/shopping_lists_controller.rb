@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShoppingListsController < ApplicationController
   before_action :use_controller_javascript
 

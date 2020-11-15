@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIndexOnNameToGroupsAndItems < ActiveRecord::Migration[6.0]
   def change
     add_index :groups, :name, unique: true

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Items::BaseController < ApplicationController
   include GroupOwnership
 

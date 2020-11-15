@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Item::Base < ApplicationRecord
   self.table_name = 'items'
 
