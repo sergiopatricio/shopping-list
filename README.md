@@ -39,5 +39,3 @@ The purpose of order confirmation is to confirm items when the purchase is being
 
 ## Technical stuff
 This is a rails app, using PostgreSQL for the database, devise for authentication and bootstrap for the layout.
-
-It started as a proof of concept for an idea and tests are still missing.
