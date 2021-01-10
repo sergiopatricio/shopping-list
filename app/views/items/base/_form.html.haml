@@ -1,4 +1,4 @@
-= form_with(model: item, scope: :item, url: url, local: true, class: 'edit-item', html: { autocomplete: 'off' }) do |form|
+= form_with(model: item, scope: :item, url: url, class: 'edit-item', html: { autocomplete: 'off' }) do |form|
   = render 'shared/errors', errors: item.errors
 
   .form-group

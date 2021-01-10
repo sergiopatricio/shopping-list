@@ -2,7 +2,7 @@
   Temporary items are removed when the shopping list is cleared.
   Create a regular #{link_to('item', items_regulars_path)} if you want to keep it forever.
 
-= form_with(model: item, scope: :item, url: items_temporaries_path, class: 'add-temporary-item-form', html: { autocomplete: 'off' }) do |form|
+= form_with(model: item, scope: :item, url: items_temporaries_path, local: false, class: 'add-temporary-item-form', html: { autocomplete: 'off' }) do |form|
   = render 'shared/errors', errors: item.errors
 
   .form-group
