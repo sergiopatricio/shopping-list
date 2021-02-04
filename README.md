@@ -31,11 +31,5 @@ Groups can be filtered so that only items from certain groups are shown.
 
 The purpose of order confirmation is to confirm items when the purchase is being made and they are added to a physical or online shopping cart.
 
-## Screenshots
-<img src="screenshots/shopping_list1.png" width="500" /> <img src="screenshots/shopping_list2.png" width="250" />
-<img src="screenshots/order_confirmation1.png" width="500" /> <img src="screenshots/order_confirmation2.png" width="250" />
-<img src="screenshots/groups.png" width="500" />
-<img src="screenshots/items.png" width="500" />
-
 ## Technical stuff
 This is a rails app, using PostgreSQL for the database, devise for authentication and bootstrap for the layout.
