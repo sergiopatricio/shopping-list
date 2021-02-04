@@ -25,7 +25,4 @@ Rails.application.routes.draw do
       patch :update_password
     end
   end
-
-  get '/shopping_list', to: redirect('/')
-  get '/shopping_cart', to: redirect('/')
 end
