@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :use_controller_javascript
 
   def show
-    items = current_user.items.to_buy.includes(:group).references(:groups).merge(Group.active)
+    items = current_user.items.to_buy.includes(:group)
     @sort = items_sort
     @items = if @sort == 'name'
                items.order(:name)

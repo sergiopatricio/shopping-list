@@ -9,7 +9,6 @@
     Go to #{link_to('order confirmation', order_path)} when doing the final purchase.
 
 %p= link_to 'Clear shopping list', shopping_list_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
-= render partial: 'groups/status_list'
 
 - @grouped_items.each do |group|
   %h3.mt-3= group.name

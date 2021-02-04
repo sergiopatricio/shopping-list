@@ -13,11 +13,7 @@ Rails.application.routes.draw do
     resources :items, only: :update
   end
 
-  resources :groups, except: :show do
-    member do
-      patch :status
-    end
-  end
+  resources :groups, except: :show
   resources :items, controller: 'items/base', only: %i[edit update destroy]
   namespace :items do
     resources :regulars, only: %i[index new create]

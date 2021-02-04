@@ -9,6 +9,4 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :position, presence: true
-
-  scope :active, -> { where(active: true) }
 end

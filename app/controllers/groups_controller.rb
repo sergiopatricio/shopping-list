@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[edit update destroy status]
+  before_action :set_group, only: %i[edit update destroy]
 
   def index
     @groups = current_user.groups.order(:position).all
@@ -36,11 +36,6 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     redirect_to groups_path, notice: 'Group was successfully destroyed.'
-  end
-
-  def status
-    @group.update(active: params[:active])
-    redirect_back(fallback_location: root_path)
   end
 
   private

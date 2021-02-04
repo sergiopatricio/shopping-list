@@ -1,3 +1,0 @@
-%p
-  - current_user.groups.order(:position).each do |group|
-    = link_to truncate(group.name, length: 20), status_group_path(group, active: !group.active), method: :patch, class: "btn btn-sm mb-1 #{group.active ? 'btn-info' : 'btn-outline-info'}"
