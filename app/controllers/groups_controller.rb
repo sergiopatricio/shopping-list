@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       GroupOrderService.new.call(@group)
-      redirect_to groups_path, notice: 'Group was successfully created.'
+      redirect_to groups_path(anchor: "group-#{@group.id}")
     else
       render :new
     end
@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   def update
     if @group.update(group_params)
       GroupOrderService.new.call(@group)
-      redirect_to groups_path, notice: 'Group was successfully updated.'
+      redirect_to groups_path(anchor: "group-#{@group.id}")
     else
       render :edit
     end

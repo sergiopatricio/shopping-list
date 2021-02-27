@@ -12,7 +12,7 @@ class Items::BaseController < ApplicationController
     check_group_ownership(@item)
     if @item.save
       ItemOrderService.new.call(@item)
-      redirect_to items_path(@item), notice: 'Item was successfully updated.'
+      redirect_to items_path(@item, anchor: "item-#{@item.id}")
     else
       render :edit
     end
@@ -33,8 +33,8 @@ class Items::BaseController < ApplicationController
     params.require(:item).permit(:name, :position, :group_id)
   end
 
-  def items_path(item)
-    return items_regulars_path if item.is_a?(Item::Regular)
+  def items_path(item, options = {})
+    return items_regulars_path(options) if item.is_a?(Item::Regular)
 
     # fallback
     root_path

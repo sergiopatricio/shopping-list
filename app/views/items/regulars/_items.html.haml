@@ -1,6 +1,6 @@
 %ul.list-group.items
   - items.each do |item|
-    %li.list-group-item
+    %li.list-group-item{ id: "item-#{item.id}" }
       .d-flex
         .flex-grow-1.align-self-center
           (#{item.position})

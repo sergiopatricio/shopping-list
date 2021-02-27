@@ -21,7 +21,7 @@ class Items::RegularsController < ApplicationController
 
     if @item.save
       ItemOrderService.new.call(@item)
-      redirect_to items_regulars_path, notice: 'Item was successfully created.'
+      redirect_to items_regulars_path(anchor: "item-#{@item.id}")
     else
       render :new
     end
