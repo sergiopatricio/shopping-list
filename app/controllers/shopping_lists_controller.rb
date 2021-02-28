@@ -10,7 +10,7 @@ class ShoppingListsController < ApplicationController
   def destroy
     group_id = params[:group_id]
 
-    temporary_items = current_user.temporary_items
+    temporary_items = current_user.items.temporary
     temporary_items = temporary_items.where(group_id: group_id) if group_id
     temporary_items.destroy_all
 

@@ -14,11 +14,15 @@ Rails.application.routes.draw do
   end
 
   resources :groups, except: :show
-  resources :items, controller: 'items/base', only: %i[edit update destroy]
-  namespace :items do
-    resources :regulars, only: %i[index new create]
-    resources :temporaries, only: %i[new create]
+  resources :items, only: %i[new create edit update destroy] do
+    collection do
+      get 'regular'
+    end
   end
+  # namespace :items do
+  #   resources :regulars, only: %i[index new create]
+  #   resources :temporaries, only: %i[new create]
+  # end
 
   resource :user, only: %i[edit update] do
     collection do

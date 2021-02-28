@@ -1,7 +1,7 @@
 %li.list-group-item.shopping-list-item{ class: item.total.positive? ? 'to-buy' : nil, data: { group_id: item.group_id } }
   .d-flex
     .flex-grow-1.align-self-center
-      = '(T)' if item.is_a?(Item::Temporary)
+      = '(T)' if item.temporary?
       = item.name
     .align-self-center.total= item.total
     .btn-group.align-self-center.actions{ role: 'group' }

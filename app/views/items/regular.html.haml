@@ -4,9 +4,9 @@
   Add the regular items usually needed, organised by #{link_to('groups', groups_path)}.
 
 - if @grouped_items.empty?
-  %p.mt-3= link_to 'New item', new_items_regular_path, class: 'btn btn-primary'
+  %p.mt-3= link_to 'New item', new_item_path, class: 'btn btn-primary'
 
 - @grouped_items.each do |group|
   %h3= group.name
   = render 'items', items: group.regular_items
-  %p.mt-3= link_to 'New item', new_items_regular_path(group_id: group.id), class: 'btn btn-primary'
+  %p.mt-3= link_to 'New item', new_item_path(group_id: group.id), class: 'btn btn-primary'
