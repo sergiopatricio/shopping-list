@@ -19,14 +19,14 @@ $(function() {
     $('#add-temporary-item-loading').show();
   });
 
-  $(document).on('ajax:success', '.add-temporary-item-form', function(event) {
-    var itemContent = $(event.detail[0].html);
+  $(document).on('ajax:success', '.edit-item', function(event) {
+    const itemContent = $(event.detail[0].html);
 
     $('#shopping-list-group-' + itemContent.data('group-id')).append(itemContent);
     $('#add-temporary-item').modal('hide')
   });
 
-  $(document).on('ajax:error', '.add-temporary-item-form', function(event) {
+  $(document).on('ajax:error', '.edit-item', function(event) {
     if (event.detail[2].status === 400) {
       $('#add-temporary-item-content').html(event.detail[0].html);
     } else {

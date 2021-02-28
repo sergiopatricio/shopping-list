@@ -10,43 +10,39 @@ class ItemsController < ApplicationController
   end
 
   def new
+    item = current_user.items.new(group_id: params[:group_id])
+    check_group_ownership(item)
+
     if request.xhr?
-      item = current_user.items.new(group_id: params[:group_id])
-      check_group_ownership(item)
-      render json: { html: render_to_string(partial: 'items/new_temporary', locals: { item: item }) }
+      item.temporary = true
+      render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
     else
-      @item = current_user.items.new(
-        group_id: params[:group_id],
-        position: (current_user.items.regular.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
-      )
-      check_group_ownership(@item)
+      item.position = (current_user.items.regular.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
+      @item = item
     end
   end
 
   def create
-    if request.xhr?
-      item = current_user.items.new(item_params)
-      check_group_ownership(item)
-      item.total = 1 # add one unit by default
-      item.position = (current_user.items.temporary.where(group_id: item.group_id).maximum(:position) || 0) + 1
-      item.temporary = true
+    item = current_user.items.new(item_params)
+    check_group_ownership(item)
 
-      if item.save
+    item.position ||=
+      (current_user.items.where(group_id: item.group_id, temporary: item.temporary).maximum(:position) || 0) + 1
+
+    if item.save
+      ItemOrderService.new.call(item)
+
+      if request.xhr?
         render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
       else
-        render json: { html: render_to_string(partial: 'items/new_temporary', locals: { item: item }) },
-               status: :bad_request
+        redirect_to regular_items_path(anchor: "item-#{item.id}")
       end
+    elsif request.xhr?
+      render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) },
+             status: :bad_request
     else
-      @item = current_user.items.new(item_params)
-      check_group_ownership(@item)
-
-      if @item.save
-        ItemOrderService.new.call(@item)
-        redirect_to regular_items_path(anchor: "item-#{@item.id}")
-      else
-        render :new
-      end
+      @item = item
+      render :new
     end
   end
 
@@ -75,6 +71,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :position, :group_id)
+    params.require(:item).permit(:group_id, :name, :position, :temporary, :total)
   end
 end
