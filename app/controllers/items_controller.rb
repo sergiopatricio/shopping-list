@@ -53,7 +53,7 @@ class ItemsController < ApplicationController
     check_group_ownership(@item)
     if @item.save
       ItemOrderService.new.call(@item)
-      redirect_to regular_items_path(anchor: "item-#{@item.id}")
+      redirect_to shopping_list_path(anchor: "item-#{@item.id}")
     else
       render :edit
     end

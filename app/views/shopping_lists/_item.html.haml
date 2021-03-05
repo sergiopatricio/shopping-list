@@ -1,9 +1,10 @@
-%li.list-group-item.shopping-list-item{ class: item.total.positive? ? 'to-buy' : nil, data: { group_id: item.group_id } }
+%li.list-group-item.shopping-list-item{ id: "item-#{item.id}", class: item.total.positive? ? 'to-buy' : nil, data: { group_id: item.group_id } }
   .d-flex
     .align-self-center.menu
       .dropdown
         %a.dropdown-toggle.item-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
         .dropdown-menu
+          = link_to 'Edit', edit_item_path(item), class: 'dropdown-item'
           = link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Delete the item?' }, class: 'dropdown-item'
     .flex-grow-1.align-self-center
       = '(T)' if item.temporary?
