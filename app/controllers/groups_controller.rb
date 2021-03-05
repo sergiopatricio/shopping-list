@@ -38,6 +38,20 @@ class GroupsController < ApplicationController
     redirect_back(fallback_location: root_path, notice: 'Group was deleted.')
   end
 
+  def sort
+    if request.post?
+      ordered_ids = params[:order]&.split(',') || []
+      groups = current_user.groups
+      ordered_ids.each_with_index do |id, index|
+        groups.where(id: id).update_all(position: index)
+      end
+
+      redirect_to shopping_list_path, notice: 'Groups order was updated.'
+    else
+      @groups = current_user.groups.order(:position)
+    end
+  end
+
   private
 
   def set_group

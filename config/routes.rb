@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :items, only: :update
   end
 
-  resources :groups, except: :show
+  resources :groups, except: :show do
+    collection do
+      get 'sort'
+      post 'sort'
+    end
+  end
   resources :items, only: %i[new create edit update destroy] do
     collection do
       get 'regular'
