@@ -12,18 +12,18 @@
     = form.text_field :name, class: 'form-control', autofocus: true
 
   - if custom
-    .form-group
-      .form-check
-        = form.check_box :temporary, class: 'form-check-input'
-        = form.label :temporary, 'Temporary item', class: 'form-check-label'
-      %small.form-text.text-muted
-        Temporary items are removed when the shopping list is cleared.
-
     = form.hidden_field :total, value: 1
 
   - else
     .form-group
       = form.label :position
       = form.number_field :position, class: 'form-control'
+
+  .form-group
+    .form-check
+      = form.check_box :temporary, class: 'form-check-input'
+      = form.label :temporary, 'Temporary item', class: 'form-check-label'
+    %small.form-text.text-muted
+      Temporary items are removed when the shopping list is cleared.
 
   = form.submit class: 'btn btn-primary'
