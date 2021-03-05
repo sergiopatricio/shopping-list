@@ -3,34 +3,34 @@ $(function() {
     $(this).closest('.shopping-list-item').replaceWith(event.detail[0].html)
   });
 
-  $('#add-temporary-item').on('show.bs.modal', function(event) {
+  $('#add-item').on('show.bs.modal', function(event) {
     $.get($(event.relatedTarget).data('new-item-path'), function(data) {
-      $('#add-temporary-item-loading').hide();
-      $('#add-temporary-item-content').html(data.html);
+      $('#add-item-loading').hide();
+      $('#add-item-content').html(data.html);
       $('#item_name').trigger('focus');
     }).fail(function() {
-      $('#add-temporary-item-loading').hide();
-      $('#add-temporary-item-content').html('Error');
+      $('#add-item-loading').hide();
+      $('#add-item-content').html('Error');
     });
   });
 
-  $('#add-temporary-item').on('hidden.bs.modal', function() {
-    $('#add-temporary-item-content').html('');
-    $('#add-temporary-item-loading').show();
+  $('#add-item').on('hidden.bs.modal', function() {
+    $('#add-item-content').html('');
+    $('#add-item-loading').show();
   });
 
   $(document).on('ajax:success', '.edit-item', function(event) {
     const itemContent = $(event.detail[0].html);
 
     $('#shopping-list-group-' + itemContent.data('group-id')).append(itemContent);
-    $('#add-temporary-item').modal('hide')
+    $('#add-item').modal('hide')
   });
 
   $(document).on('ajax:error', '.edit-item', function(event) {
     if (event.detail[2].status === 400) {
-      $('#add-temporary-item-content').html(event.detail[0].html);
+      $('#add-item-content').html(event.detail[0].html);
     } else {
-      $('#add-temporary-item-content').html('Error');
+      $('#add-item-content').html('Error');
     }
   });
 });
