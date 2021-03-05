@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to regular_items_path, notice: 'Item was successfully destroyed.'
+    redirect_back(fallback_location: root_path, notice: 'Item was deleted.')
   end
 
   private

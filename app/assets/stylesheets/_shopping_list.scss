@@ -14,7 +14,7 @@
   }
 
   .actions {
-    width: 6rem;
+    width: 5rem;
   }
 }
 
@@ -34,4 +34,14 @@
     font-size: $font-size-base * .75;
     color: $gray-600;
   }
+}
+
+.item-menu {
+  display: block;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: asset-url('three-dots-vertical.svg');
+  background-size: 1rem 1rem;
+  text-indent: -9999px;
 }
