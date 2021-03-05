@@ -11,7 +11,7 @@
               data: { confirm: 'Reset quantities and remove temporary items of confirmed items?' }
 
   - @grouped_items.each do |group|
-    %h3.mt-3
+    %h3.mt-3{ id: "group-#{group.id}" }
       .dropdown.group-menu-container>
         %a.dropdown-toggle.group-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
         .dropdown-menu
@@ -19,6 +19,8 @@
                     data: { confirm: 'Reset all quantities and remove temporary items in this group?' }
           = link_to 'Clear confirmed', shopping_list_path(group_id: group.id, confirmed: true), method: :delete, class: 'dropdown-item',
                     data: { confirm: 'Reset all quantities and remove temporary items of confirmed items in this group?' }
+          = link_to 'Edit', edit_group_path(group), class: 'dropdown-item'
+          = link_to 'Delete', group_path(group), method: :delete, data: { confirm: 'Delete the group?' }, class: 'dropdown-item'
       = group.name
 
     %ul.list-group.shopping-list{ id: "shopping-list-group-#{group.id}" }

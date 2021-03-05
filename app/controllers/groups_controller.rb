@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   def update
     if @group.update(group_params)
       GroupOrderService.new.call(@group)
-      redirect_to groups_path(anchor: "group-#{@group.id}")
+      redirect_to shopping_list_path(anchor: "group-#{@group.id}")
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path, notice: 'Group was successfully destroyed.'
+    redirect_back(fallback_location: root_path, notice: 'Group was deleted.')
   end
 
   private
