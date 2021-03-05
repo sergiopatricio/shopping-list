@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   scope :to_buy, -> { where('total > 0') }
   scope :temporary, -> { where(temporary: true) }
   scope :regular, -> { where(temporary: false) }
+  scope :confirmed, -> { where(confirmed: true) }
 
   private
 

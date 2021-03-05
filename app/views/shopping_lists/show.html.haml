@@ -4,13 +4,21 @@
   .alert.alert-secondary
     Start by creating #{link_to('groups', groups_path)} to organise #{link_to('items', regular_items_path)}.
 - else
-  %p= link_to 'Clear shopping list', shopping_list_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Reset all quantities and remove temporary items?' }
+  .btn-group.mb-3
+    = link_to 'Clear all', shopping_list_path, method: :delete, class: 'btn btn-danger',
+              data: { confirm: 'Reset quantities and remove temporary items?' }
+    = link_to 'Clear confirmed', shopping_list_path(confirmed: true), method: :delete, class: 'btn btn-warning',
+              data: { confirm: 'Reset quantities and remove temporary items of confirmed items?' }
 
   - @grouped_items.each do |group|
     %h3.mt-3= group.name
 
     - if group.items.any?
-      %p= link_to 'Clear', shopping_list_path(group_id: group.id), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Reset all quantities and remove temporary items on group?' }
+      .btn-group.mb-2
+        = link_to 'Clear', shopping_list_path(group_id: group.id), method: :delete, class: 'btn btn-danger btn-sm',
+                  data: { confirm: 'Reset all quantities and remove temporary items in this group?' }
+        = link_to 'Clear confirmed', shopping_list_path(group_id: group.id, confirmed: true), method: :delete, class: 'btn btn-warning btn-sm',
+                  data: { confirm: 'Reset all quantities and remove temporary items of confirmed items in this group?' }
 
     %ul.list-group.shopping-list{ id: "shopping-list-group-#{group.id}" }
       - group.items.each do |item|
