@@ -33,5 +33,4 @@ en:
   activerecord:
     models:
       group: group
-      item/base: item
-      item/regular: regular item
+      item: item
