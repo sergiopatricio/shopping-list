@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     @items = if @sort == 'name'
                items.order(:name)
              else
-               items.order('groups.position, items.temporary, items.position')
+               items.order('groups.position, items.position')
              end
   end
 

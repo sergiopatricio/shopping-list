@@ -13,11 +13,12 @@ class ItemsController < ApplicationController
     item = current_user.items.new(group_id: params[:group_id])
     check_group_ownership(item)
 
+    item.position = (current_user.items.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
+
     if request.xhr?
       item.temporary = true
       render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
     else
-      item.position = (current_user.items.regular.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
       @item = item
     end
   end
@@ -26,8 +27,7 @@ class ItemsController < ApplicationController
     item = current_user.items.new(item_params)
     check_group_ownership(item)
 
-    item.position ||=
-      (current_user.items.where(group_id: item.group_id, temporary: item.temporary).maximum(:position) || 0) + 1
+    item.position ||= (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
 
     if item.save
       ItemOrderService.new.call(item)
