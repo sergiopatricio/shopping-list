@@ -4,6 +4,8 @@
       .dropdown
         %a.dropdown-toggle.item-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
         .dropdown-menu
+          %h6.dropdown-header Item options
+          .dropdown-divider
           = link_to 'Edit', edit_item_path(item), class: 'dropdown-item'
           = link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Delete the item?' }, class: 'dropdown-item'
     .flex-grow-1.align-self-center

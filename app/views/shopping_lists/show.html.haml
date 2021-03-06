@@ -15,12 +15,16 @@
       .dropdown.group-menu-container>
         %a.dropdown-toggle.group-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
         .dropdown-menu
+          %h6.dropdown-header Group options
+          .dropdown-divider
           = link_to 'Clear all', shopping_list_path(group_id: group.id), method: :delete, class: 'dropdown-item',
                     data: { confirm: 'Reset all quantities and remove temporary items in this group?' }
           = link_to 'Clear confirmed', shopping_list_path(group_id: group.id, confirmed: true), method: :delete, class: 'dropdown-item',
                     data: { confirm: 'Reset all quantities and remove temporary items of confirmed items in this group?' }
+          .dropdown-divider
           = link_to 'Edit', edit_group_path(group), class: 'dropdown-item'
           = link_to 'Delete', group_path(group), method: :delete, data: { confirm: 'Delete the group?' }, class: 'dropdown-item'
+          .dropdown-divider
           = link_to 'Sort groups', sort_groups_path, class: 'dropdown-item'
       = group.name
 
