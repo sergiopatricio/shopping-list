@@ -8,16 +8,16 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = current_user.groups.new(position: (current_user.groups.maximum(:position) || 0) + 1)
+    @group = current_user.groups.new
   end
 
   def edit; end
 
   def create
     @group = current_user.groups.new(group_params)
+    @group.position = (current_user.groups.maximum(:position) || 0) + 1
 
     if @group.save
-      GroupOrderService.new.call(@group)
       redirect_to groups_path(anchor: "group-#{@group.id}")
     else
       render :new
@@ -26,7 +26,6 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      GroupOrderService.new.call(@group)
       redirect_to shopping_list_path(anchor: "group-#{@group.id}")
     else
       render :edit
@@ -59,6 +58,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :position)
+    params.require(:group).permit(:name)
   end
 end
