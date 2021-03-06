@@ -10,11 +10,9 @@ When logged in, users can change the email and password on the user details page
 
 Registration and password recovery are not implemented at the moment.
 
-## Groups 
-Groups are used to organise items. They can be a section of the house (bathroom, kitchen, etc.), separate lists (home, work, etc.), or any other grouping preference.
-
-## Items
-These are the regular items to have on the shopping list.
+## Groups & items
+Groups are used to organise items. They can be a section of the house (bathroom, kitchen, etc.), separate lists (home,
+work, etc.), or any other grouping preference.
 
 ## Shopping list
 Shows all items organised by group and allows quantities to be updated.
@@ -26,7 +24,8 @@ The purpose of the shopping list is to update quantities on the needed items.
 Order confirmation only shows the items with quantity bigger than zero.
 Items can be sorted by group or name.
 
-The purpose of order confirmation is to confirm items when the purchase is being made and they are added to a physical or online shopping cart.
+The purpose of order confirmation is to confirm items when the purchase is being made and they are added to a physical 
+or online shopping cart.
 
 ## Technical stuff
 This is a rails app, using PostgreSQL for the database, devise for authentication and bootstrap for the layout.
