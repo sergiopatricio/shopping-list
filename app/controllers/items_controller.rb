@@ -64,6 +64,16 @@ class ItemsController < ApplicationController
     redirect_back(fallback_location: root_path, notice: 'Item was deleted.')
   end
 
+  def sort
+    ordered_ids = params[:order]&.split(',') || []
+    items = current_user.items
+    ordered_ids.each_with_index do |id, index|
+      items.where(id: id).update_all(position: index)
+    end
+
+    redirect_to shopping_list_path
+  end
+
   private
 
   def set_item

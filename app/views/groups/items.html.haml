@@ -1,0 +1,15 @@
+- content_for :head do
+  = javascript_include_tag('Sortable.min.js')
+  = javascript_include_tag('sort')
+
+%h1 Sort items
+
+%ul.list-group.items#sort-list
+  - @items.each do |item|
+    %li.list-group-item{ data: { id: item.id } }
+      %span.sort-icon Move
+      = item.name
+
+= form_with url: sort_items_path do |form|
+  = form.hidden_field :order, id: 'ordered-ids'
+  = form.submit 'Save order', class: 'btn btn-primary mt-3'

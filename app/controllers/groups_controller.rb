@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[edit update destroy]
+  before_action :set_group, only: %i[edit update destroy items]
 
   def index
     @groups = current_user.groups.order(:position)
@@ -45,6 +45,10 @@ class GroupsController < ApplicationController
     end
 
     redirect_to shopping_list_path, notice: 'Groups order was updated.'
+  end
+
+  def items
+    @items = @group.items.order(:position)
   end
 
   private

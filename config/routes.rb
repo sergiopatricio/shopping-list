@@ -17,16 +17,16 @@ Rails.application.routes.draw do
     collection do
       post 'sort'
     end
+    member do
+      get 'items'
+    end
   end
   resources :items, only: %i[new create edit update destroy] do
     collection do
       get 'regular'
+      post 'sort'
     end
   end
-  # namespace :items do
-  #   resources :regulars, only: %i[index new create]
-  #   resources :temporaries, only: %i[new create]
-  # end
 
   resource :user, only: %i[edit update] do
     collection do

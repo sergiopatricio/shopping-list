@@ -8,6 +8,8 @@
           .dropdown-divider
           = link_to 'Edit', edit_item_path(item), class: 'dropdown-item'
           = link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Delete the item?' }, class: 'dropdown-item'
+          .dropdown-divider
+          = link_to 'Sort items', items_group_path(item.group), class: 'dropdown-item'
     .flex-grow-1.align-self-center
       = '(T)' if item.temporary?
       = item.name
