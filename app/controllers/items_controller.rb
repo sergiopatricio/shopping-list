@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     check_group_ownership(item)
 
     item.position = (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
+    item.total = 1 if item.temporary?
 
     if item.save
       render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
@@ -61,6 +62,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:group_id, :name, :temporary, :total)
+    params.require(:item).permit(:group_id, :name, :temporary)
   end
 end
