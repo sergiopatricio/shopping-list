@@ -7,9 +7,7 @@
       %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#navbar-nav-alt-markup' }, aria: { controls: 'navbar-nav-alt-markup', expanded: 'false', label: 'Toggle navigation' } }
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup
-        %ul.navbar-nav.mr-auto
-          %li-nav-item= link_to 'Items', regular_items_path, class: 'nav-link'
-        %ul.navbar-nav
+        %ul.navbar-nav.ml-auto
           %li-nav-item= link_to 'User details', edit_user_path, class: 'nav-link'
           %li-nav-item= link_to 'Log out', destroy_user_session_path, class: 'nav-link', method: :delete
 

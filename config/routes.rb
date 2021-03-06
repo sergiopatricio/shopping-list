@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   end
   resources :items, only: %i[new create edit update destroy] do
     collection do
-      get 'regular'
       post 'sort'
     end
   end

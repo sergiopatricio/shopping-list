@@ -5,20 +5,12 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: %i[edit update destroy]
 
-  def regular
-    @grouped_items = current_user.groups.includes(:regular_items).order(:position)
-  end
-
   def new
     item = current_user.items.new(group_id: params[:group_id])
     check_group_ownership(item)
 
-    if request.xhr?
-      item.temporary = true
-      render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
-    else
-      @item = item
-    end
+    item.temporary = true
+    render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
   end
 
   def create
@@ -28,17 +20,10 @@ class ItemsController < ApplicationController
     item.position = (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
 
     if item.save
-      if request.xhr?
-        render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
-      else
-        redirect_to regular_items_path(anchor: "item-#{item.id}")
-      end
-    elsif request.xhr?
+      render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
+    else
       render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) },
              status: :bad_request
-    else
-      @item = item
-      render :new
     end
   end
 
@@ -56,7 +41,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_back(fallback_location: root_path, notice: 'Item was deleted.')
+    redirect_to shopping_list_path, notice: 'Item was deleted.'
   end
 
   def sort
