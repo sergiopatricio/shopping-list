@@ -13,8 +13,6 @@ class ItemsController < ApplicationController
     item = current_user.items.new(group_id: params[:group_id])
     check_group_ownership(item)
 
-    item.position = (current_user.items.where(group_id: params[:group_id]).maximum(:position) || 0) + 1
-
     if request.xhr?
       item.temporary = true
       render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
@@ -27,11 +25,9 @@ class ItemsController < ApplicationController
     item = current_user.items.new(item_params)
     check_group_ownership(item)
 
-    item.position ||= (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
+    item.position = (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
 
     if item.save
-      ItemOrderService.new.call(item)
-
       if request.xhr?
         render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
       else
@@ -52,7 +48,6 @@ class ItemsController < ApplicationController
     @item.assign_attributes(item_params)
     check_group_ownership(@item)
     if @item.save
-      ItemOrderService.new.call(@item)
       redirect_to shopping_list_path(anchor: "item-#{@item.id}")
     else
       render :edit
@@ -71,7 +66,7 @@ class ItemsController < ApplicationController
       items.where(id: id).update_all(position: index)
     end
 
-    redirect_to shopping_list_path
+    redirect_to shopping_list_path, notice: 'Items order was updated.'
   end
 
   private
@@ -81,6 +76,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:group_id, :name, :position, :temporary, :total)
+    params.require(:item).permit(:group_id, :name, :temporary, :total)
   end
 end
