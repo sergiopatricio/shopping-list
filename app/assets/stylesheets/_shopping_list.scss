@@ -19,6 +19,15 @@
 }
 
 .shopping-list {
+  .group-title {
+    position: sticky;
+    top: 3.5rem;
+    z-index: 1;
+    border-bottom: 1px solid #aaa;
+    background-color: #eee;
+    line-height: 2;
+  }
+
   .to-buy {
     background-color: #ebf5eb;
   }
