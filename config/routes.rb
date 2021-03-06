@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   resources :groups, except: :show do
     collection do
-      get 'sort'
       post 'sort'
     end
   end

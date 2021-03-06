@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[edit update destroy]
 
   def index
-    @groups = current_user.groups.order(:position).all
+    @groups = current_user.groups.order(:position)
   end
 
   def new
@@ -38,17 +38,13 @@ class GroupsController < ApplicationController
   end
 
   def sort
-    if request.post?
-      ordered_ids = params[:order]&.split(',') || []
-      groups = current_user.groups
-      ordered_ids.each_with_index do |id, index|
-        groups.where(id: id).update_all(position: index)
-      end
-
-      redirect_to shopping_list_path, notice: 'Groups order was updated.'
-    else
-      @groups = current_user.groups.order(:position)
+    ordered_ids = params[:order]&.split(',') || []
+    groups = current_user.groups
+    ordered_ids.each_with_index do |id, index|
+      groups.where(id: id).update_all(position: index)
     end
+
+    redirect_to shopping_list_path, notice: 'Groups order was updated.'
   end
 
   private

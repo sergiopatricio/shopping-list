@@ -25,7 +25,7 @@
           = link_to 'Edit', edit_group_path(group), class: 'dropdown-item'
           = link_to 'Delete', group_path(group), method: :delete, data: { confirm: 'Delete the group?' }, class: 'dropdown-item'
           .dropdown-divider
-          = link_to 'Sort groups', sort_groups_path, class: 'dropdown-item'
+          = link_to 'Sort groups', groups_path, class: 'dropdown-item'
       = group.name
 
     %ul.list-group.shopping-list{ id: "shopping-list-group-#{group.id}" }
