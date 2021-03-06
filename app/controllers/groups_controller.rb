@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
     @group.position = (current_user.groups.maximum(:position) || 0) + 1
 
     if @group.save
-      redirect_to groups_path(anchor: "group-#{@group.id}")
+      redirect_to shopping_list_path(anchor: "group-#{@group.id}")
     else
       render :new
     end
@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_back(fallback_location: root_path, notice: 'Group was deleted.')
+    redirect_to shopping_list_path, notice: 'Group was deleted.'
   end
 
   def sort

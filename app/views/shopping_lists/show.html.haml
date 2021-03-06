@@ -1,8 +1,8 @@
 %h1 Shopping list
 
 - if @grouped_items.empty?
-  .alert.alert-secondary
-    Start by creating #{link_to('groups', groups_path)} to organise #{link_to('items', regular_items_path)}.
+  .alert.alert-info
+    Start by creating groups to organise items.
 - else
   .btn-group.mb-3
     = link_to 'Clear all', shopping_list_path, method: :delete, class: 'btn btn-danger',
@@ -47,3 +47,5 @@
           .text-center#add-item-loading
             .spinner-border{ role: 'status' }
           #add-item-content
+
+= link_to 'Create new group', new_group_path, class: 'btn btn-primary'
