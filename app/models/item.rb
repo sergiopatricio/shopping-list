@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   validates :position, presence: true
   validates :total, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_same_user_on_item_and_group
+  validates :url, url: true, allow_blank: true
 
   scope :to_buy, -> { where('total > 0') }
   scope :temporary, -> { where(temporary: true) }

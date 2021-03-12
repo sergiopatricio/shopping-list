@@ -1,7 +1,7 @@
 %li.list-group-item.confirmation-item{ class: item.confirmed ? 'confirmed' : nil }
   .d-flex
     .flex-grow-1.align-self-center
-      = item.name
+      = render 'items/name_with_url', item: item
       %span.item-group= item.group.name
     .align-self-center.total= item.total
     .align-self-center

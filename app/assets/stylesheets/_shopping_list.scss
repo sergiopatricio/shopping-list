@@ -76,3 +76,12 @@
   text-indent: -9999px;
   cursor: move;
 }
+
+.item-url {
+  display: inline-block;
+  width: 1rem;
+  height: 100%;
+  background: asset-url('box-arrow-in-up-right.svg');
+  background-size: 100% 100%;
+  text-indent: -9999px;
+}

@@ -62,6 +62,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:group_id, :name, :temporary)
+    params.require(:item).permit(:group_id, :name, :temporary, :url)
   end
 end

@@ -12,6 +12,10 @@
     = form.text_field :name, class: 'form-control', autofocus: true, required: true
 
   .form-group
+    = form.label :url, 'URL'
+    = form.url_field :url, class: 'form-control'
+
+  .form-group
     .form-check
       = form.check_box :temporary, class: 'form-check-input'
       = form.label :temporary, 'Temporary item', class: 'form-check-label'
