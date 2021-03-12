@@ -18,6 +18,6 @@ $(document).on('ajax:error', function(event) {
 // scroll window because of sticky nav bar
 $(function() {
   if (location.hash) {
-    scrollBy(0, -60)
+    scrollBy(0, -120)
   }
 });
