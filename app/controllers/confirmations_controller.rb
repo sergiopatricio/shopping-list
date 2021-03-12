@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OrdersController < ApplicationController
+class ConfirmationsController < ApplicationController
   before_action :use_controller_javascript
 
   def show
@@ -15,13 +15,13 @@ class OrdersController < ApplicationController
 
   def destroy
     current_user.items.update_all(confirmed: false)
-    redirect_to order_path, notice: 'Confirmations cleared.'
+    redirect_to confirmation_path, notice: 'Confirmations cleared.'
   end
 
   private
 
   def items_sort
-    current_user.save_preference(:order_sort, params[:sort]) if params[:sort].present?
-    current_user.preference_for(:order_sort)
+    current_user.save_preference(:confirmation_sort, params[:sort]) if params[:sort].present?
+    current_user.preference_for(:confirmation_sort)
   end
 end

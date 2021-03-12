@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   namespace :shopping_list do
     resources :items, only: :update
   end
-  resource :order, only: %i[show destroy]
-  namespace :order do
+  resource :confirmation, only: %i[show destroy]
+  namespace :confirmation do
     resources :items, only: :update
   end
 

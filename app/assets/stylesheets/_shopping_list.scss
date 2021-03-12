@@ -6,7 +6,7 @@
   max-width: 30rem;
 }
 
-.shopping-list, .order-confirmation {
+.shopping-list, .confirmations {
   max-width: 40rem;
 
   .total {
@@ -33,7 +33,7 @@
   }
 }
 
-.order-confirmation {
+.confirmations {
   .confirmed {
     background-color: #ebf5eb;
   }

@@ -20,12 +20,12 @@ Regular items are always there. Temporary items can be added and will be removed
 
 The purpose of the shopping list is to update quantities on the needed items.
 
-## Order
-Order confirmation only shows the items with quantity bigger than zero.
+## Confirmation
+Confirmation only shows the items with quantity bigger than zero.
 Items can be sorted by group or name.
 
-The purpose of order confirmation is to confirm items when the purchase is being made and they are added to a physical 
-or online shopping cart.
+The purpose of confirmation is to confirm items when the purchase is being made and they are added to a physical or
+online shopping cart.
 
 ## Technical stuff
 This is a rails app, using PostgreSQL for the database, devise for authentication and bootstrap for the layout.
