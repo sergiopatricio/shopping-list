@@ -1,10 +1,13 @@
 %li.list-group-item.confirmation-item{ class: item.confirmed ? 'confirmed' : nil }
   .d-flex
     .flex-grow-1.align-self-center
-      = render 'items/name_with_url', item: item
+      = item.name
       %span.item-group= item.group.name
+    - if item.url.present?
+      .align-self-center.url
+        = link_to 'URL', item.url, target: '_blank', class: 'item-url', rel: 'noopener'
     .align-self-center.total= item.total
-    .align-self-center
+    .align-self-center.actions
       - if item.confirmed
         = link_to 'Unconfirm', confirmation_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=false' }, class: 'btn btn-warning action'
       - else

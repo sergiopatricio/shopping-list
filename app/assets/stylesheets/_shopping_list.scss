@@ -9,12 +9,15 @@
 .shopping-list, .confirmations {
   max-width: 40rem;
 
-  .total {
-    width: 2rem;
+  .total,
+  .url,
+  .actions {
+    margin-left: 1rem;
   }
 
-  .actions {
-    width: 5rem;
+  .total {
+    min-width: 1.5rem;
+    text-align: right;
   }
 }
 
@@ -30,6 +33,10 @@
 
   .to-buy {
     background-color: #ebf5eb;
+  }
+
+  .actions {
+    width: 5rem;
   }
 }
 
