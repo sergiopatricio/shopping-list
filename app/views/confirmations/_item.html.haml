@@ -5,10 +5,10 @@
       %span.item-group= item.group.name
     - if item.url.present?
       .align-self-center.url
-        = link_to 'URL', item.url, target: '_blank', class: 'item-url', rel: 'noopener'
+        = link_to 'URL', item.url, target: '_blank', class: 'icon-small icon-url', rel: 'noopener'
     .align-self-center.total= item.total
     .align-self-center.actions
       - if item.confirmed
-        = link_to 'Unconfirm', confirmation_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=false' }, class: 'btn btn-warning action'
+        = link_to 'Unconfirm', confirmation_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=false' }, class: 'action icon-medium icon-unconfirm'
       - else
-        = link_to 'Confirm', confirmation_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=true' }, class: 'btn btn-primary action'
+        = link_to 'Confirm', confirmation_item_path(item), method: :patch, remote: true, data: { params: 'confirmed=true' }, class: 'action icon-medium icon-confirm'

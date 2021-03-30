@@ -2,7 +2,7 @@
   .d-flex
     .align-self-center.menu
       .dropdown
-        %a.dropdown-toggle.item-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
+        %a.dropdown-toggle.icon-small.icon-menu{ href: '#', data: { toggle: 'dropdown' } } Actions
         .dropdown-menu
           %h6.dropdown-header Item options
           .dropdown-divider
@@ -10,13 +10,13 @@
           = link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Delete the item?' }, class: 'dropdown-item'
           .dropdown-divider
           = link_to 'Sort items', items_group_path(item.group), class: 'dropdown-item'
-    .flex-grow-1.align-self-center
+    .flex-grow-1.align-self-center.item-name
       = '(T)' if item.temporary?
       = item.name
     - if item.url.present?
       .align-self-center.url
-        = link_to 'URL', item.url, target: '_blank', class: 'item-url', rel: 'noopener'
+        = link_to 'URL', item.url, target: '_blank', class: 'icon-small icon-url', rel: 'noopener'
     .align-self-center.total= item.total
-    .btn-group.align-self-center.actions{ role: 'group' }
-      = link_to '+', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total + 1}" }, class: 'btn btn-primary action'
-      = link_to '-', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total - 1}" }, class: 'btn btn-warning action'
+    .align-self-center.actions
+      = link_to '-', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total - 1}" }, class: 'action icon-medium icon-remove'
+      = link_to '+', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total + 1}" }, class: 'action icon-medium icon-add'

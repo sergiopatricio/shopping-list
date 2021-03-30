@@ -1,0 +1,77 @@
+.icon-small,
+.icon-medium {
+  display: inline-block;
+  height: 100%;
+  text-indent: -9999px;
+}
+
+.icon-small {
+  width: 1rem;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.icon-medium {
+  width: 2rem;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+
+.icon-add {
+  mask: asset-url('plus-square-fill.svg');
+  mask-size: 100% 100%;
+  background-color: $primary;
+
+  &:hover {
+    background-color: darken($primary, 15%);
+  }
+}
+
+.icon-remove {
+  mask: asset-url('dash-square-fill.svg');
+  mask-size: 100% 100%;
+  background-color: $warning;
+
+  &:hover {
+    background-color: darken($warning, 15%);
+  }
+}
+
+.icon-confirm {
+  mask: asset-url('check-square-fill.svg');
+  mask-size: 100% 100%;
+  background-color: $primary;
+
+  &:hover {
+    background-color: darken($primary, 15%);
+  }
+}
+
+.icon-unconfirm {
+  mask: asset-url('x-square-fill.svg');
+  mask-size: 100% 100%;
+  background-color: $warning;
+
+  &:hover {
+    background-color: darken($warning, 15%);
+  }
+}
+
+.icon-sort {
+  line-height: 1.5rem;
+  width: 2rem;
+  background: asset-url('justify.svg');
+  background-size: 100% 100%;
+  cursor: move;
+}
+
+.icon-url {
+  background: asset-url('box-arrow-in-up-right.svg');
+  background-size: 100% 100%;
+}
+
+.icon-menu {
+  background: asset-url('three-dots-vertical.svg');
+  background-size: 100% 100%;
+}

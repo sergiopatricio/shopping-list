@@ -13,6 +13,7 @@
   .url,
   .actions {
     margin-left: 1rem;
+    white-space: nowrap;
   }
 
   .total {
@@ -30,13 +31,17 @@
     background-color: #eee;
     line-height: 2;
   }
+  .icon-menu {
+    margin-right: 0.5rem;
+  }
+
+  .group-menu {
+    width: 1.5rem;
+    font-size: 1.6rem
+  }
 
   .to-buy {
     background-color: #ebf5eb;
-  }
-
-  .actions {
-    width: 5rem;
   }
 }
 
@@ -54,41 +59,4 @@
 
 .group-menu-container {
   display: inline-block;
-}
-
-.group-menu,
-.item-menu {
-  display: block;
-  margin-right: 0.5rem;
-  height: 100%;
-  background: asset-url('three-dots-vertical.svg');
-  background-size: 100% 100%;
-  text-indent: -9999px;
-}
-
-.group-menu {
-  width: 1.5rem;
-}
-
-.item-menu {
-  width: 1rem;
-}
-
-.sort-icon {
-  display: inline-block;
-  width: 2rem;
-  height: 100%;
-  background: asset-url('justify.svg');
-  background-size: 100% 100%;
-  text-indent: -9999px;
-  cursor: move;
-}
-
-.item-url {
-  display: inline-block;
-  width: 1rem;
-  height: 100%;
-  background: asset-url('box-arrow-in-up-right.svg');
-  background-size: 100% 100%;
-  text-indent: -9999px;
 }

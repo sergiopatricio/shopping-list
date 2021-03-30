@@ -1,6 +1,6 @@
 $(function() {
   const sortable = Sortable.create(document.getElementById('sort-list'), {
-    handle: '.sort-icon',
+    handle: '.sort-handle',
     onUpdate: function () {
       $('#ordered-ids').val(this.toArray())
     }
