@@ -24,7 +24,7 @@
   background-color: $primary;
 
   &:hover {
-    background-color: darken($primary, 15%);
+    background-color: shade-color($primary, 15%);
   }
 }
 
@@ -34,7 +34,7 @@
   background-color: $warning;
 
   &:hover {
-    background-color: darken($warning, 15%);
+    background-color: shade-color($warning, 15%);
   }
 }
 
@@ -44,7 +44,7 @@
   background-color: $primary;
 
   &:hover {
-    background-color: darken($primary, 15%);
+    background-color: shade-color($primary, 15%);
   }
 }
 
@@ -54,7 +54,7 @@
   background-color: $warning;
 
   &:hover {
-    background-color: darken($warning, 15%);
+    background-color: shade-color($warning, 15%);
   }
 }
 

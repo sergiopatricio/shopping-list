@@ -3,10 +3,10 @@
   = render partial: 'shared/flash'
 
   .form-group
-    = form.label :email
+    = form.label :email, class: 'form-label'
     = form.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true
   .form-group
-    = form.label :password
+    = form.label :password, class: 'form-label'
     = form.password_field :password, autocomplete: 'current-password', class: 'form-control', required: true
 
   = form.submit 'Log in', class: 'btn btn-primary'

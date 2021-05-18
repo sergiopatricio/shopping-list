@@ -4,15 +4,15 @@
   = render 'shared/errors', errors: item.errors
 
   .form-group
-    = form.label :group_id
+    = form.label :group_id, class: 'form-label'
     = form.collection_select :group_id, current_user.groups.order(:name).all, :id, :name, { prompt: true }, class: 'form-control', required: true
 
   .form-group
-    = form.label :name
+    = form.label :name, class: 'form-label'
     = form.text_field :name, class: 'form-control', autofocus: true, required: true
 
   .form-group
-    = form.label :url, 'URL'
+    = form.label :url, 'URL', class: 'form-label'
     = form.url_field :url, class: 'form-control'
 
   .form-group

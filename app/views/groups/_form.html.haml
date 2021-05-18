@@ -2,7 +2,7 @@
   = render 'shared/errors', errors: group.errors
 
   .form-group
-    = form.label :name
+    = form.label :name, class: 'form-label'
     = form.text_field :name, class: 'form-control', autofocus: true, required: true
 
   = form.submit class: 'btn btn-primary'

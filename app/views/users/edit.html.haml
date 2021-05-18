@@ -4,7 +4,7 @@
 
 = form_with(model: @user, class: 'user-edit') do |form|
   .form-group
-    = form.label :email
+    = form.label :email, class: 'form-label'
     = form.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true
 
   = form.submit 'Update', class: 'btn btn-primary'
@@ -12,13 +12,13 @@
 %h3.mt-5 Change password
 = form_with(model: @user, url: update_password_user_path, class: 'user-edit') do |form|
   .form-group
-    = form.label :current_password
+    = form.label :current_password, class: 'form-label'
     = form.password_field :current_password, autocomplete: 'current-password', class: 'form-control', required: true
   .form-group
-    = form.label :password
+    = form.label :password, class: 'form-label'
     = form.password_field :password, autocomplete: 'new-password', class: 'form-control', required: true
   .form-group
-    = form.label :password_confirmation
+    = form.label :password_confirmation, class: 'form-label'
     = form.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control', required: true
 
   = form.submit 'Update password', class: 'btn btn-primary'

@@ -13,7 +13,7 @@ gem 'uglifier', '~> 4.2.0'
 gem 'bootsnap', '~> 1.7.5', require: false
 gem 'rack-timeout', '~> 0.6.0'
 gem 'hamlit', '~> 2.15.0'
-gem 'bootstrap', '~> 4.6.0'
+gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails', '~> 4.4.0'
 gem 'devise', '~> 4.8.0'
 gem 'airbrake', '~> 11.0.3'
