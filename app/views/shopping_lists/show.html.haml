@@ -4,14 +4,18 @@
   .alert.alert-info
     Start by creating groups to organise items.
 - else
-  .btn-group.mb-3
-    = link_to 'Clear all', shopping_list_path, method: :delete, class: 'btn btn-danger',
-              data: { confirm: 'Reset quantities and remove temporary items?' }
-    = link_to 'Clear confirmed', shopping_list_path(confirmed: true), method: :delete, class: 'btn btn-warning',
-              data: { confirm: 'Reset quantities and remove temporary items of confirmed items?' }
+  .shopping-list
+    .d-flex.justify-content-between.mb-4
+      .btn-group
+        = link_to 'Clear all', shopping_list_path, method: :delete, class: 'btn btn-danger',
+                  data: { confirm: 'Reset quantities and remove temporary items?' }
+        = link_to 'Clear confirmed', shopping_list_path(confirmed: true), method: :delete, class: 'btn btn-warning',
+                  data: { confirm: 'Reset quantities and remove temporary items of confirmed items?' }
+      .btn-group
+        %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path } }
+          Add item
 
-  - @grouped_items.each do |group|
-    .shopping-list
+    - @grouped_items.each do |group|
       %h3.group-title.mt-3{ id: "group-#{group.id}" }
         .dropdown.group-menu-container>
           %a.dropdown-toggle.group-menu.icon-medium.icon-menu{ href: '#', data: { bs_toggle: 'dropdown' } } Actions
@@ -34,9 +38,9 @@
         - group.items.each do |item|
           = render 'item', item: item
 
-    %p.mt-2.mb-5
-      %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path(group_id: group.id) } }
-        Add item
+      %p.mt-2.mb-5
+        %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path(group_id: group.id) } }
+          Add item
 
   .modal#add-item{ tabindex: '-1' }
     .modal-dialog.modal-dialog-centered
@@ -49,4 +53,4 @@
             .spinner-border{ role: 'status' }
           #add-item-content
 
-= link_to 'Create new group', new_group_path, class: 'btn btn-primary'
+  = link_to 'Create new group', new_group_path, class: 'btn btn-primary'
