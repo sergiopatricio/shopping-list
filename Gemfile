@@ -3,14 +3,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.0.3'
 
 gem 'rails', '~> 6.1.4.1'
 gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 5.5.2'
 gem 'sass-rails', '~> 6.0.0'
 gem 'uglifier', '~> 4.2.0'
-gem 'bootsnap', '~> 1.9.1', require: false
+gem 'bootsnap', '~> 1.9.3', require: false
 gem 'rack-timeout', '~> 0.6.0'
 gem 'hamlit', '~> 2.15.1'
 gem 'bootstrap', '~> 5.1.3'
