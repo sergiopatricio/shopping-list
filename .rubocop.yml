@@ -29,6 +29,9 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Max: 250
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
 
