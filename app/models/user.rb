@@ -7,8 +7,6 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_one :preference, dependent: :destroy
 
-  validates :email, email: true, uniqueness: true
-
   # enable devise "remember be" by default
   def remember_me
     true
