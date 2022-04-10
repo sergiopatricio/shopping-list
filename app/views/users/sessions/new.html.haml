@@ -1,5 +1,6 @@
+%h1.text-center.m-5 Shopping List
+
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'sign-in-form' }) do |form|
-  %h1 Log in
   = render partial: 'shared/flash'
 
   .form-group
