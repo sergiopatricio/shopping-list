@@ -6,8 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.1'
 
 gem 'rails', '~> 6.1.5'
-gem 'pg', '~> 1.3.4'
-gem 'puma', '~> 5.6.2'
+gem 'pg', '~> 1.3.5'
+gem 'puma', '~> 5.6.4'
 gem 'sass-rails', '~> 6.0.0'
 gem 'uglifier', '~> 4.2.0'
 gem 'bootsnap', '~> 1.11.1', require: false
@@ -25,8 +25,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'rubocop', '~> 1.26.0', require: false
-  gem 'rubocop-rails', '~> 2.14.0', require: false
+  gem 'rubocop', '~> 1.27.0', require: false
+  gem 'rubocop-rails', '~> 2.14.2', require: false
   gem 'rubocop-performance', '~> 1.13.3', require: false
   gem 'rubocop-rspec', '~> 2.9.0', require: false
   gem 'haml_lint', '~> 0.40.0', require: false
