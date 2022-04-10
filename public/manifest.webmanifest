@@ -1,0 +1,86 @@
+{
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "/icon/maskable-icon-x57.png",
+      "sizes": "57x57",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x60.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x76.png",
+      "sizes": "76x76",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x114.png",
+      "sizes": "114x114",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon/maskable-icon-x250.png",
+      "sizes": "250x250",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "name": "Shopping List",
+  "start_url": "/"
+}
