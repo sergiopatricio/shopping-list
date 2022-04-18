@@ -1,6 +1,6 @@
 {
   "background_color": "#FFFFFF",
-  "display": "fullscreen",
+  "display": "standalone",
   "icons": [
     {
       "src": "/icon/maskable-icon-x57.png",
