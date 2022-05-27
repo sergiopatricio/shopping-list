@@ -10,7 +10,7 @@
     = javascript_include_tag('application')
     = javascript_include_tag(params[:controller]) if @use_controller_javascript
     = render 'layouts/favicon'
-    = tag(:link, rel: 'manifest', href: '/manifest.webmanifest')
+    = tag.link(rel: 'manifest', href: '/manifest.webmanifest')
     = yield(:head)
   %body.pb-5
     = content_for?(:content) ? yield(:content) : yield
