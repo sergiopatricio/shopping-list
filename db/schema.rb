@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_111542) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_03_12_111542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.boolean "active", default: true
     t.index ["user_id", "name"], name: "index_groups_on_user_id_and_name", unique: true
@@ -31,8 +30,8 @@ ActiveRecord::Schema.define(version: 2021_03_12_111542) do
     t.string "name", null: false
     t.integer "position"
     t.integer "total", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "confirmed", default: false
     t.bigint "user_id", null: false
     t.boolean "temporary", default: false
@@ -45,20 +44,20 @@ ActiveRecord::Schema.define(version: 2021_03_12_111542) do
   create_table "preferences", force: :cascade do |t|
     t.bigint "user_id"
     t.string "confirmation_sort"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
