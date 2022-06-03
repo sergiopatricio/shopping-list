@@ -6,7 +6,9 @@
     %title Shopping list
     = csrf_meta_tags
     = csp_meta_tag
+    = stylesheet_link_tag('bootstrap.min', media: 'all')
     = stylesheet_link_tag('application', media: 'all')
+    = javascript_include_tag('bootstrap.bundle.min')
     = javascript_include_tag('application')
     = javascript_include_tag(params[:controller]) if @use_controller_javascript
     = render 'layouts/favicon'

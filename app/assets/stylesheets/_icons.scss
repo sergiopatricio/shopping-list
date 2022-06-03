@@ -21,40 +21,40 @@
 .icon-add {
   mask: asset-url('plus-square-fill.svg');
   mask-size: 100% 100%;
-  background-color: $primary;
+  background-color: #0d6efd; // $primary
 
   &:hover {
-    background-color: shade-color($primary, 15%);
+    background-color: #0b5ed7; // shade-color($primary, 15%)
   }
 }
 
 .icon-remove {
   mask: asset-url('dash-square-fill.svg');
   mask-size: 100% 100%;
-  background-color: $warning;
+  background-color: #ffc107; // $warning
 
   &:hover {
-    background-color: shade-color($warning, 15%);
+    background-color: #d9a406; // shade-color($warning, 15%)
   }
 }
 
 .icon-confirm {
   mask: asset-url('check-square-fill.svg');
   mask-size: 100% 100%;
-  background-color: $primary;
+  background-color: #0d6efd; // $primary
 
   &:hover {
-    background-color: shade-color($primary, 15%);
+    background-color: #0b5ed7; // shade-color($primary, 15%)
   }
 }
 
 .icon-unconfirm {
   mask: asset-url('x-square-fill.svg');
   mask-size: 100% 100%;
-  background-color: $warning;
+  background-color: #ffc107; // $warning
 
   &:hover {
-    background-color: shade-color($warning, 15%);
+    background-color: #d9a406; // shade-color($warning, 15%)
   }
 }
 

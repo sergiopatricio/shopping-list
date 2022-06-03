@@ -1,5 +1,7 @@
 //= link_tree ../images
+//= link bootstrap.min.css
 //= link application.css
+//= link bootstrap.bundle.min.js
 //= link application.js
 //= link shopping_lists.js
 //= link confirmations.js

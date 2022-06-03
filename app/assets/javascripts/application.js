@@ -1,7 +1,5 @@
 //= require rails-ujs
 //= require jquery3
-//= require popper
-//= require bootstrap
 
 $(document).ajaxError(function(event, jqxhr) {
   if (jqxhr.status == 401) {
