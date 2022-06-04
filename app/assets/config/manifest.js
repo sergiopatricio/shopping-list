@@ -1,6 +1,6 @@
 //= link_tree ../images
 //= link bootstrap.min.css
-//= link application.css
+//= link_directory ../stylesheets .css
 //= link bootstrap.bundle.min.js
 //= link application.js
 //= link shopping_lists.js

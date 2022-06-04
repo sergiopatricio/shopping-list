@@ -8,7 +8,6 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.3'
 gem 'pg', '~> 1.3.5'
 gem 'puma', '~> 5.6.4'
-gem 'sass-rails', '~> 6.0.0'
 gem 'uglifier', '~> 4.2.0'
 gem 'bootsnap', '~> 1.11.1', require: false
 gem 'rack-timeout', '~> 0.6.0'
