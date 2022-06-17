@@ -1,4 +1,4 @@
-%li.list-group-item.shopping-list-item{ id: "item-#{item.id}", class: item.total.positive? ? 'to-buy' : nil, data: { group_id: item.group_id } }
+%li.list-group-item.shopping-list-item{ id: "shopping-list-item-#{item.id}", class: item.total.positive? ? 'to-buy' : nil }
   .d-flex
     .align-self-center.menu
       .dropdown
@@ -6,10 +6,10 @@
         .dropdown-menu
           %h6.dropdown-header Item options
           .dropdown-divider
-          = link_to 'Edit', edit_item_path(item), class: 'dropdown-item'
-          = link_to 'Delete', item_path(item), method: :delete, data: { confirm: 'Delete the item?' }, class: 'dropdown-item'
+          = link_to 'Edit', edit_item_path(item), data: { turbo_frame: 'modal' }, class: 'dropdown-item'
+          = link_to 'Delete', item_path(item), data: { turbo_method: 'delete', turbo_confirm: 'Delete the item?' }, class: 'dropdown-item'
           .dropdown-divider
-          = link_to 'Sort items', items_group_path(item.group), class: 'dropdown-item'
+          = link_to 'Sort items', items_group_path(item.group), data: { turbo: 'false' }, class: 'dropdown-item'
     .flex-grow-1.align-self-center.item-name
       = '(T)' if item.temporary?
       = item.name
@@ -18,5 +18,5 @@
         = link_to 'URL', item.url, target: '_blank', class: 'icon-small icon-url', rel: 'noopener'
     .align-self-center.total= item.total
     .align-self-center.actions
-      = link_to '-', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total - 1}" }, class: 'action icon-medium icon-remove'
-      = link_to '+', shopping_list_item_path(item), method: :patch, remote: true, data: { params: "total=#{item.total + 1}" }, class: 'action icon-medium icon-add'
+      = link_to '-', shopping_list_item_path(item, total: item.total - 1), data: { turbo_method: 'patch' }, class: 'action icon-medium icon-remove'
+      = link_to '+', shopping_list_item_path(item, total: item.total + 1), data: { turbo_method: 'patch' }, class: 'action icon-medium icon-add'

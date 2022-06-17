@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ConfirmationsController < ApplicationController
-  before_action :use_controller_javascript
-
   def show
     items = current_user.items.to_buy.includes(:group)
     sort = items_sort

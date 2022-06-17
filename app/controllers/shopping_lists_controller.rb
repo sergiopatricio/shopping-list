@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ShoppingListsController < ApplicationController
-  before_action :use_controller_javascript
-
   def show
     grouped_items = current_user.groups.includes(:items).order(:position)
     render :show, locals: { grouped_items: grouped_items }
@@ -19,6 +17,6 @@ class ShoppingListsController < ApplicationController
     items.temporary.destroy_all
     items.update_all(total: 0, confirmed: false)
 
-    redirect_to shopping_list_path, notice: 'Shopping list cleared.'
+    redirect_to shopping_list_path, status: :see_other, notice: 'Shopping list cleared.'
   end
 end

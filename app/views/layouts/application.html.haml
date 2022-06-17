@@ -2,16 +2,18 @@
   %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-3.sticky-top
     .container
       .nav-bar-brands
-        = link_to 'Shopping list', root_path, class: 'navbar-brand'
-        = link_to 'Confirmation', confirmation_path, class: 'navbar-brand'
+        = link_to 'Shopping list', root_path, data: { turbo: 'false' }, class: 'navbar-brand'
+        = link_to 'Confirmation', confirmation_path, data: { turbo: 'false' }, class: 'navbar-brand'
       %button.navbar-toggler{ type: 'button', data: { bs_toggle: 'collapse', bs_target: '#navbar-nav-alt-markup' }, aria: { controls: 'navbar-nav-alt-markup', expanded: 'false', label: 'Toggle navigation' } }
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup
         %ul.navbar-nav.ms-auto
-          %li.nav-item= link_to 'User details', edit_user_path, class: 'nav-link'
-          %li.nav-item= link_to 'Log out', destroy_user_session_path, class: 'nav-link', method: :delete
+          %li.nav-item= link_to 'User details', edit_user_path, data: { turbo: 'false' }, class: 'nav-link'
+          %li.nav-item= link_to 'Log out', destroy_user_session_path, data: { turbo_method: 'delete', turbo_frame: '_top' }, class: 'nav-link'
 
   .container
     = render partial: 'shared/flash'
     = yield
+    = turbo_frame_tag 'modal', target: '_top'
+
 = render template: 'layouts/base'

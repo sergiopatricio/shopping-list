@@ -1,10 +1,6 @@
-- content_for :head do
-  = javascript_include_tag('Sortable.min.js')
-  = javascript_include_tag('sort')
-
 %h1 Sort items
 
-%ul.list-group.items#sort-list
+%ul.list-group.items#sort-list{ data: { controller: 'sort' } }
   - items.each do |item|
     %li.list-group-item{ data: { id: item.id } }
       %span.sort-handle.icon-small.icon-sort Move

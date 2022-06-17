@@ -19,23 +19,31 @@ class GroupsController < ApplicationController
     group.position = (current_user.groups.maximum(:position) || 0) + 1
 
     if group.save
-      redirect_to shopping_list_path(anchor: "group-#{group.id}")
+      redirect_to shopping_list_path
     else
-      render :new, locals: { group: group }
+      render turbo_stream: turbo_stream.update('modal-body-content',
+                                               partial: 'groups/form',
+                                               locals: { group: group }),
+             status: :unprocessable_entity
     end
   end
 
   def update
     if group.update(group_params)
-      redirect_to shopping_list_path(anchor: "group-#{group.id}")
+      # TODO: create group partial to render just group
+      # also, on updates maybe just update the group header without the items
+      redirect_to shopping_list_path
     else
-      render :edit, locals: { group: group }
+      render turbo_stream: turbo_stream.update('modal-body-content',
+                                               partial: 'groups/form',
+                                               locals: { group: group }),
+             status: :unprocessable_entity
     end
   end
 
   def destroy
     group.destroy
-    redirect_to shopping_list_path, notice: 'Group was deleted.'
+    render turbo_stream: turbo_stream.remove("shopping-list-group-#{group.id}")
   end
 
   def sort

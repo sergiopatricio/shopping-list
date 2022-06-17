@@ -5,7 +5,9 @@ class Confirmation::ItemsController < ApplicationController
     item.confirmed = params[:confirmed]
     item.restore_attributes unless item.save
 
-    render json: { html: render_to_string(partial: 'confirmations/item', locals: { item: item }) }
+    render turbo_stream: turbo_stream.replace("confirmation-item-#{item.id}",
+                                              partial: 'confirmations/item',
+                                              locals: { item: item })
   end
 
   private

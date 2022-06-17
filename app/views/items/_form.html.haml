@@ -1,6 +1,4 @@
-- custom = local_assigns[:custom] == true
-
-= form_with(model: item, local: !custom, class: 'edit-item', html: { autocomplete: 'off' }) do |form|
+= form_with(model: item, class: 'edit-item', html: { autocomplete: 'off' }) do |form|
   = render 'shared/errors', errors: item.errors
 
   .form-group

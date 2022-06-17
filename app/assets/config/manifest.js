@@ -2,8 +2,5 @@
 //= link bootstrap.min.css
 //= link_directory ../stylesheets .css
 //= link bootstrap.bundle.min.js
-//= link application.js
-//= link shopping_lists.js
-//= link confirmations.js
-//= link Sortable.min.js
-//= link sort.js
+//= link_tree ../../javascript .js
+//= link_tree ../../../vendor/javascript .js

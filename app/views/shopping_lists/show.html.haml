@@ -7,50 +7,42 @@
   .shopping-list
     .d-flex.justify-content-between.mb-4
       .btn-group
-        = link_to 'Clear all', shopping_list_path, method: :delete, class: 'btn btn-danger',
-                  data: { confirm: 'Reset quantities and remove temporary items?' }
-        = link_to 'Clear confirmed', shopping_list_path(confirmed: true), method: :delete, class: 'btn btn-warning',
-                  data: { confirm: 'Reset quantities and remove temporary items of confirmed items?' }
+        = link_to 'Clear all', shopping_list_path,
+                  data: { turbo_method: 'delete', turbo_confirm: 'Reset quantities and remove temporary items?' },
+                  class: 'btn btn-danger'
+        = link_to 'Clear confirmed', shopping_list_path(confirmed: true),
+                  data: { turbo_method: 'delete', turbo_confirm: 'Reset quantities and remove temporary items of confirmed items?' },
+                  class: 'btn btn-warning'
       .btn-group
-        %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path } }
-          Add item
+        = link_to 'Add item', new_item_path, data: { turbo_frame: 'modal' }, class: 'btn btn-primary'
 
     - grouped_items.each do |group|
-      %h3.group-title.mt-3{ id: "group-#{group.id}" }
-        .dropdown.group-menu-container>
-          %a.dropdown-toggle.group-menu.icon-medium.icon-menu{ href: '#', data: { bs_toggle: 'dropdown' } } Actions
-          .dropdown-menu
-            %h6.dropdown-header Group options
-            .dropdown-divider
-            = link_to 'Clear all', shopping_list_path(group_id: group.id), method: :delete, class: 'dropdown-item',
-                      data: { confirm: 'Reset all quantities and remove temporary items in this group?' }
-            = link_to 'Clear confirmed', shopping_list_path(group_id: group.id, confirmed: true), method: :delete, class: 'dropdown-item',
-                      data: { confirm: 'Reset all quantities and remove temporary items of confirmed items in this group?' }
-            .dropdown-divider
-            = link_to 'Edit', edit_group_path(group), class: 'dropdown-item'
-            = link_to 'Delete', group_path(group), method: :delete, data: { confirm: 'Delete the group?' }, class: 'dropdown-item'
-            .dropdown-divider
-            = link_to 'Sort groups', groups_path, class: 'dropdown-item'
-            = link_to 'Sort items', items_group_path(group), class: 'dropdown-item'
-        = group.name
+      = turbo_frame_tag "shopping-list-group-#{group.id}" do
+        %h3.group-title.mt-3
+          .dropdown.group-menu-container>
+            %a.dropdown-toggle.group-menu.icon-medium.icon-menu{ href: '#', data: { bs_toggle: 'dropdown' } } Actions
+            .dropdown-menu
+              %h6.dropdown-header Group options
+              .dropdown-divider
+              = link_to 'Clear all', shopping_list_path(group_id: group.id),
+                        data: { turbo_method: 'delete', turbo_frame: '_top', turbo_confirm: 'Reset all quantities and remove temporary items in this group?' },
+                        class: 'dropdown-item'
+              = link_to 'Clear confirmed', shopping_list_path(group_id: group.id, confirmed: true),
+                        data: { turbo_method: 'delete', turbo_frame: '_top', turbo_confirm: 'Reset all quantities and remove temporary items of confirmed items in this group?' },
+                        class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Edit', edit_group_path(group), data: { turbo_frame: 'modal' }, class: 'dropdown-item'
+              = link_to 'Delete', group_path(group), data: { turbo_method: :delete, turbo_confirm: 'Delete the group?' }, class: 'dropdown-item'
+              .dropdown-divider
+              = link_to 'Sort groups', groups_path, data: { turbo: 'false' }, class: 'dropdown-item'
+              = link_to 'Sort items', items_group_path(group), data: { turbo: 'false' }, class: 'dropdown-item'
+          = group.name
 
-      %ul.list-group{ id: "shopping-list-group-#{group.id}" }
-        - group.items.each do |item|
-          = render 'item', item: item
+        %ul.list-group{ id: "shopping-list-group-#{group.id}" }
+          - group.items.each do |item|
+            = render 'item', item: item
 
-      %p.mt-2.mb-5
-        %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path(group_id: group.id) } }
-          Add item
+        %p.mt-2.mb-5
+          = link_to 'Add item', new_item_path(group_id: group.id), data: { turbo_frame: 'modal' }, class: 'btn btn-primary btn-sm'
 
-  .modal#add-item{ tabindex: '-1' }
-    .modal-dialog.modal-dialog-centered
-      .modal-content
-        .modal-header
-          %h5.modal-title Add item
-          %button.btn-close{ type: 'button', data: { bs_dismiss: 'modal' } }
-        .modal-body
-          .text-center#add-item-loading
-            .spinner-border{ role: 'status' }
-          #add-item-content
-
-  = link_to 'Create new group', new_group_path, class: 'btn btn-primary'
+  = link_to 'Create new group', new_group_path, data: { turbo_frame: 'modal' }, class: 'btn btn-primary'

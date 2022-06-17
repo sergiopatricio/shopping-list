@@ -7,10 +7,9 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag('bootstrap.min', media: 'all')
-    = stylesheet_link_tag('application', media: 'all')
+    = stylesheet_link_tag('application', media: 'all', 'data-turbo-track': 'reload')
     = javascript_include_tag('bootstrap.bundle.min')
-    = javascript_include_tag('application')
-    = javascript_include_tag(params[:controller]) if @use_controller_javascript
+    = javascript_importmap_tags
     = render 'layouts/favicon'
     = tag.link(rel: 'manifest', href: '/manifest.webmanifest')
     = yield(:head)

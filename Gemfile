@@ -9,13 +9,15 @@ gem 'airbrake', '~> 13.0.2'
 gem 'bootsnap', '~> 1.11.1', require: false
 gem 'devise', '~> 4.8.1'
 gem 'hamlit', '~> 2.16.0'
-gem 'jquery-rails', '~> 4.5.0'
+gem 'importmap-rails', '~> 1.1.1'
 gem 'pg', '~> 1.3.5'
 gem 'puma', '~> 5.6.4'
 gem 'rack-timeout', '~> 0.6.0'
 gem 'rails', '~> 7.0.3'
+gem 'redis', '~> 4.6.0'
 gem 'sprockets-rails', '~> 3.4.2'
-gem 'uglifier', '~> 4.2.0'
+gem 'stimulus-rails', '~> 1.0.4'
+gem 'turbo-rails', '~> 1.1.1'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.2.0'

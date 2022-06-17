@@ -5,7 +5,9 @@ class ShoppingList::ItemsController < ApplicationController
     item.total = params[:total]
     item.restore_attributes unless item.save
 
-    render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
+    render turbo_stream: turbo_stream.replace("shopping-list-item-#{item.id}",
+                                              partial: 'shopping_lists/item',
+                                              locals: { item: item })
   end
 
   private

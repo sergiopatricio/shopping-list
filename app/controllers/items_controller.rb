@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     check_group_ownership(item)
 
     item.temporary = true
-    render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) }
+    render :new, locals: { item: item }
   end
 
   def create
@@ -19,10 +19,12 @@ class ItemsController < ApplicationController
     item.total = 1 if item.temporary?
 
     if item.save
-      render json: { html: render_to_string(partial: 'shopping_lists/item', locals: { item: item }) }
+      redirect_to shopping_list_path
     else
-      render json: { html: render_to_string(partial: 'items/form', locals: { item: item, custom: true }) },
-             status: :bad_request
+      render turbo_stream: turbo_stream.update('modal-body-content',
+                                               partial: 'items/form',
+                                               locals: { item: item }),
+             status: :unprocessable_entity
     end
   end
 
@@ -34,15 +36,24 @@ class ItemsController < ApplicationController
     item.assign_attributes(item_params)
     check_group_ownership(item)
     if item.save
-      redirect_to shopping_list_path(anchor: "item-#{item.id}")
+      if item.saved_change_to_group_id?
+        redirect_to shopping_list_path
+      else
+        render turbo_stream: turbo_stream.replace("shopping-list-item-#{item.id}",
+                                                  partial: 'shopping_lists/item',
+                                                  locals: { item: item })
+      end
     else
-      render :edit, locals: { item: item }
+      render turbo_stream: turbo_stream.update('modal-body-content',
+                                               partial: 'items/form',
+                                               locals: { item: item }),
+             status: :unprocessable_entity
     end
   end
 
   def destroy
     item.destroy
-    redirect_to shopping_list_path, notice: 'Item was deleted.'
+    render turbo_stream: turbo_stream.remove("shopping-list-item-#{item.id}")
   end
 
   def sort
