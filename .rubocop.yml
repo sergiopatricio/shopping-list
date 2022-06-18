@@ -12,9 +12,6 @@ AllCops:
     - bin/**/*
     - db/schema.rb
 
-Bundler/OrderedGems:
-  Enabled: false
-
 Layout/LineLength:
   Max: 120
   Exclude:
