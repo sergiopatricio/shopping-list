@@ -4,7 +4,8 @@ class ShoppingListsController < ApplicationController
   before_action :use_controller_javascript
 
   def show
-    @grouped_items = current_user.groups.includes(:items).order(:position)
+    grouped_items = current_user.groups.includes(:items).order(:position)
+    render :show, locals: { grouped_items: grouped_items }
   end
 
   def destroy

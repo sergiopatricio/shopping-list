@@ -1,6 +1,6 @@
 %h1 Shopping list
 
-- if @grouped_items.empty?
+- if grouped_items.empty?
   .alert.alert-info
     Start by creating groups to organise items.
 - else
@@ -15,7 +15,7 @@
         %button.btn.btn-primary.btn-sm{ type: 'button', data: { bs_toggle: 'modal', bs_target: '#add-item', new_item_path: new_item_path } }
           Add item
 
-    - @grouped_items.each do |group|
+    - grouped_items.each do |group|
       %h3.group-title.mt-3{ id: "group-#{group.id}" }
         .dropdown.group-menu-container>
           %a.dropdown-toggle.group-menu.icon-medium.icon-menu{ href: '#', data: { bs_toggle: 'dropdown' } } Actions

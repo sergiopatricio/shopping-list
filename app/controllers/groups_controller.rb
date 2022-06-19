@@ -1,39 +1,40 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[edit update destroy items]
-
   def index
-    @groups = current_user.groups.order(:position)
+    groups = current_user.groups.order(:position)
+    render :index, locals: { groups: groups }
   end
 
   def new
-    @group = current_user.groups.new
+    render :new, locals: { group: current_user.groups.new }
   end
 
-  def edit; end
+  def edit
+    render :edit, locals: { group: group }
+  end
 
   def create
-    @group = current_user.groups.new(group_params)
-    @group.position = (current_user.groups.maximum(:position) || 0) + 1
+    group = current_user.groups.new(group_params)
+    group.position = (current_user.groups.maximum(:position) || 0) + 1
 
-    if @group.save
-      redirect_to shopping_list_path(anchor: "group-#{@group.id}")
+    if group.save
+      redirect_to shopping_list_path(anchor: "group-#{group.id}")
     else
-      render :new
+      render :new, locals: { group: group }
     end
   end
 
   def update
-    if @group.update(group_params)
-      redirect_to shopping_list_path(anchor: "group-#{@group.id}")
+    if group.update(group_params)
+      redirect_to shopping_list_path(anchor: "group-#{group.id}")
     else
-      render :edit
+      render :edit, locals: { group: group }
     end
   end
 
   def destroy
-    @group.destroy
+    group.destroy
     redirect_to shopping_list_path, notice: 'Group was deleted.'
   end
 
@@ -48,13 +49,14 @@ class GroupsController < ApplicationController
   end
 
   def items
-    @items = @group.items.order(:position)
+    items = group.items.order(:position)
+    render :items, locals: { items: items }
   end
 
   private
 
-  def set_group
-    @group = current_user.groups.find(params[:id])
+  def group
+    @group ||= current_user.groups.find(params[:id])
   end
 
   def group_params

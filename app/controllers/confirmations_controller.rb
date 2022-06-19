@@ -5,12 +5,14 @@ class ConfirmationsController < ApplicationController
 
   def show
     items = current_user.items.to_buy.includes(:group)
-    @sort = items_sort
-    @items = if @sort == 'name'
-               items.order(:name)
-             else
-               items.order('groups.position, items.position')
-             end
+    sort = items_sort
+    items = if sort == 'name'
+              items.order(:name)
+            else
+              items.order('groups.position, items.position')
+            end
+
+    render :show, locals: { sort: sort, items: items }
   end
 
   def destroy

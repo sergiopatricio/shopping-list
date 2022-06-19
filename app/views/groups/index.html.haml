@@ -5,7 +5,7 @@
 %h1 Sort groups
 
 %ul.list-group.groups#sort-list
-  - @groups.each do |group|
+  - groups.each do |group|
     %li.list-group-item{ data: { id: group.id } }
       %span.sort-handle.icon-small.icon-sort Move
       = group.name

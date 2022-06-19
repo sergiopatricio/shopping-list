@@ -3,8 +3,6 @@
 class ItemsController < ApplicationController
   include GroupOwnership
 
-  before_action :set_item, only: %i[edit update destroy]
-
   def new
     item = current_user.items.new(group_id: params[:group_id])
     check_group_ownership(item)
@@ -28,20 +26,22 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    render :edit, locals: { item: item }
+  end
 
   def update
-    @item.assign_attributes(item_params)
-    check_group_ownership(@item)
-    if @item.save
-      redirect_to shopping_list_path(anchor: "item-#{@item.id}")
+    item.assign_attributes(item_params)
+    check_group_ownership(item)
+    if item.save
+      redirect_to shopping_list_path(anchor: "item-#{item.id}")
     else
-      render :edit
+      render :edit, locals: { item: item }
     end
   end
 
   def destroy
-    @item.destroy
+    item.destroy
     redirect_to shopping_list_path, notice: 'Item was deleted.'
   end
 
@@ -57,8 +57,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def set_item
-    @item = current_user.items.find(params[:id])
+  def item
+    @item ||= current_user.items.find(params[:id])
   end
 
   def item_params
