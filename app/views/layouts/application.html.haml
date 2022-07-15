@@ -2,8 +2,8 @@
   %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-3.sticky-top
     .container
       .nav-bar-brands
-        = link_to 'Shopping list', root_path, data: { turbo: 'false' }, class: 'navbar-brand'
-        = link_to 'Confirmation', confirmation_path, data: { turbo: 'false' }, class: 'navbar-brand'
+        = link_to 'Shopping list', root_path, class: 'navbar-brand'
+        = link_to 'Confirmation', confirmation_path, class: 'navbar-brand'
       %button.navbar-toggler{ type: 'button', data: { bs_toggle: 'collapse', bs_target: '#navbar-nav-alt-markup' }, aria: { controls: 'navbar-nav-alt-markup', expanded: 'false', label: 'Toggle navigation' } }
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup
