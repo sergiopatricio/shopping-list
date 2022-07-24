@@ -38,7 +38,7 @@
               = link_to 'Sort items', items_group_path(group), data: { turbo: 'false' }, class: 'dropdown-item'
           = group.name
 
-        %ul.list-group{ id: "shopping-list-group-#{group.id}" }
+        %ul.list-group{ id: "shopping-list-group-#{group.id}-items" }
           - group.items.each do |item|
             = render 'item', item: item
 

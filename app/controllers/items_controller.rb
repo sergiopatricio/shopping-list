@@ -15,11 +15,14 @@ class ItemsController < ApplicationController
     item = current_user.items.new(item_params)
     check_group_ownership(item)
 
-    item.position = (current_user.items.where(group_id: item.group_id).maximum(:position) || 0) + 1
+    item.position = next_group_id_position(item.group_id)
     item.total = 1 if item.temporary?
 
     if item.save
-      redirect_to shopping_list_path
+      render turbo_stream: turbo_stream.append("shopping-list-group-#{item.group_id}-items",
+                                               partial: 'shopping_lists/item',
+                                               locals: { item: item })
+
     else
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'items/form',
@@ -35,9 +38,16 @@ class ItemsController < ApplicationController
   def update
     item.assign_attributes(item_params)
     check_group_ownership(item)
+
+    item.position = next_group_id_position(item.group_id) if item.group_id_changed?
     if item.save
       if item.saved_change_to_group_id?
-        redirect_to shopping_list_path
+        render turbo_stream: [
+          turbo_stream.remove("shopping-list-item-#{item.id}"),
+          turbo_stream.append("shopping-list-group-#{item.group_id}-items",
+                              partial: 'shopping_lists/item',
+                              locals: { item: item })
+        ]
       else
         render turbo_stream: turbo_stream.replace("shopping-list-item-#{item.id}",
                                                   partial: 'shopping_lists/item',
@@ -74,5 +84,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:group_id, :name, :temporary, :url)
+  end
+
+  def next_group_id_position(group_id)
+    (current_user.items.where(group_id: group_id).maximum(:position) || 0) + 1
   end
 end
