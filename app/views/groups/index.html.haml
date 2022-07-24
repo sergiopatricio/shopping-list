@@ -3,7 +3,7 @@
 %ul.list-group.groups#sort-list{ data: { controller: 'sort' } }
   - groups.each do |group|
     %li.list-group-item{ data: { id: group.id } }
-      %span.sort-handle.icon-small.icon-sort Move
+      %span.sort-handle.icon-small.icon-move Move
       = group.name
 
 = form_with url: sort_groups_path do |form|
