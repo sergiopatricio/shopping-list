@@ -1,5 +1,6 @@
 .icon-small,
-.icon-medium {
+.icon-medium,
+.icon-custom {
   display: inline-block;
   height: 100%;
   text-indent: -9999px;
@@ -78,4 +79,31 @@
 .icon-menu {
   background: url(<%= asset_path('three-dots-vertical.svg') %>);
   background-size: 100% 100%;
+}
+
+.icon-sort-name,
+.icon-sort-group {
+  background-color: #0d6efd;
+  width: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1rem;
+  vertical-align: middle;
+}
+.btn-primary .icon-sort-name,
+.btn-primary .icon-sort-group,
+.btn-outline-primary:hover .icon-sort-name,
+.btn-outline-primary:hover .icon-sort-group {
+  background-color: #fff;
+}
+.icon-sort-name {
+  -webkit-mask: url(<%= asset_path('sort-alpha-down.svg') %>);
+  mask: url(<%= asset_path('sort-alpha-down.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.icon-sort-group {
+  -webkit-mask: url(<%= asset_path('view-stacked.svg') %>);
+  mask: url(<%= asset_path('view-stacked.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
