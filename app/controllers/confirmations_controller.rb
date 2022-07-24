@@ -14,8 +14,15 @@ class ConfirmationsController < ApplicationController
   end
 
   def destroy
-    current_user.items.update_all(confirmed: false)
-    redirect_to confirmation_path, notice: 'Confirmations cleared.'
+    if params[:confirmed] == 'true'
+      items = current_user.items.confirmed
+      items.temporary.destroy_all
+      items.update_all(total: 0, confirmed: false)
+    else
+      current_user.items.update_all(confirmed: false)
+    end
+
+    redirect_to confirmation_path, status: :see_other, notice: 'Confirmations cleared.'
   end
 
   private
