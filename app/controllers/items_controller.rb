@@ -41,6 +41,14 @@ class ItemsController < ApplicationController
 
     item.position = next_group_id_position(item.group_id) if item.group_id_changed?
     if item.save
+      if request.referer&.match?('/confirmation')
+        # from confirmation page
+        render turbo_stream: turbo_stream.replace("confirmation-item-#{item.id}",
+                                                  partial: 'confirmations/item',
+                                                  locals: { item: item })
+        return
+      end
+
       if item.saved_change_to_group_id?
         render turbo_stream: [
           turbo_stream.remove("shopping-list-item-#{item.id}"),
@@ -63,7 +71,7 @@ class ItemsController < ApplicationController
 
   def destroy
     item.destroy
-    render turbo_stream: turbo_stream.remove("shopping-list-item-#{item.id}")
+    render turbo_stream: turbo_stream.remove_all("#shopping-list-item-#{item.id}, #confirmation-item-#{item.id}")
   end
 
   def sort

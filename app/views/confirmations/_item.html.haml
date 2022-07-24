@@ -1,5 +1,12 @@
 %li.list-group-item.confirmation-item{ id: "confirmation-item-#{item.id}", class: item.confirmed ? 'confirmed' : nil }
   .d-flex
+    .align-self-center.menu
+      .dropdown
+        %a.dropdown-toggle.icon-small.icon-menu{ href: '#', data: { bs_toggle: 'dropdown' } } Actions
+        .dropdown-menu
+          %h6.dropdown-header Item options
+          = link_to 'Edit', edit_item_path(item), data: { turbo_frame: 'modal' }, class: 'dropdown-item'
+          = link_to 'Delete', item_path(item), data: { turbo_method: 'delete', turbo_confirm: 'Delete the item?' }, class: 'dropdown-item'
     .flex-grow-1.align-self-center
       = item.name
       %span.item-group= item.group.name

@@ -44,7 +44,8 @@
   background-color: #eee;
   line-height: 2;
 }
-.shopping-list .icon-menu {
+.shopping-list .icon-menu,
+.confirmations .icon-menu {
   margin-right: 0.5rem;
 }
 .shopping-list .group-menu {
