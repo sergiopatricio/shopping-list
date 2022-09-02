@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
-gem 'airbrake', '~> 13.0.2'
 gem 'bootsnap', '~> 1.12.0', require: false
 gem 'devise', '~> 4.8.1'
 gem 'hamlit', '~> 2.16.0'
