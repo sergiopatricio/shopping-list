@@ -15,6 +15,16 @@
         = link_to 'URL', item.url, target: '_blank', class: 'icon-small icon-url', rel: 'noopener'
     .align-self-center.total= item.total
     .align-self-center.actions
+      - if item.later
+        = link_to 'For now',
+                   confirmation_item_path(item, later: false),
+                   data: { turbo_method: 'patch' },
+                   class: 'action icon-medium icon-for-now'
+      - else
+        = link_to 'For later',
+                 confirmation_item_path(item, later: true),
+                 data: { turbo_method: 'patch' },
+                 class: 'action icon-medium icon-for-later'
       - if item.confirmed
         = link_to 'Unconfirm',
                    confirmation_item_path(item, confirmed: false),

@@ -41,6 +41,28 @@
   background-color: #d9a406; // shade-color($warning, 15%)
 }
 
+.icon-for-later {
+  -webkit-mask: url(<%= asset_path('arrow-down-square-fill.svg') %>);
+  mask: url(<%= asset_path('arrow-down-square-fill.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: #6c757d; // $secondary
+}
+.icon-for-later:hover {
+  background-color: #494f54;
+}
+
+.icon-for-now {
+  -webkit-mask: url(<%= asset_path('arrow-up-square-fill.svg') %>);
+  mask: url(<%= asset_path('arrow-up-square-fill.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: #6c757d; // $secondary
+}
+.icon-for-now:hover {
+  background-color: #494f54;
+}
+
 .icon-confirm {
   -webkit-mask: url(<%= asset_path('check-square-fill.svg') %>);
   mask: url(<%= asset_path('check-square-fill.svg') %>);

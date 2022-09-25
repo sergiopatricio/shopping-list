@@ -1,6 +1,6 @@
 %h1 Confirmation
 
-- if items.any?
+- if items_for_now.any? || items_for_later.any?
   .confirmations
     .d-flex.justify-content-between.mb-4
       .btn-group
@@ -17,8 +17,13 @@
         = link_to confirmation_path(sort: 'name'), class: "btn #{sorted_by_name ? 'btn-primary' : 'btn-outline-primary'}" do
           %span.icon-custom.icon-sort-name Sort by name
 
-    %ul.list-group
-      - items.each do |item|
+    %ul.list-group#confirmation-now-items
+      - items_for_now.each do |item|
+        = render 'item', item: item
+
+    %h2.mt-4 Items for later
+    %ul.list-group#confirmation-later-items
+      - items_for_later.each do |item|
         = render 'item', item: item
 
 - else

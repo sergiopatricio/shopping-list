@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
 class ConfirmationsController < ApplicationController
+  before_action :save_items_sort_preference
+
   def show
     items = current_user.items.to_buy.includes(:group)
-    sort = items_sort
-    items = if sort == 'name'
-              items.order(:name)
-            else
-              items.order('groups.position, items.position')
-            end
+    items_for_now = items.where(later: false)
+    items_for_later = items.where(later: true)
+    sort = current_user.preference_for(:confirmation_sort)
 
-    render :show, locals: { sort: sort, items: items }
+    render :show, locals: {
+      sort: sort,
+      items_for_now: ordered_items(items_for_now, sort),
+      items_for_later: ordered_items(items_for_later, sort)
+    }
   end
 
   def destroy
     if params[:confirmed] == 'true'
       items = current_user.items.confirmed
       items.temporary.destroy_all
-      items.update_all(total: 0, confirmed: false)
+      items.update_all(total: 0, confirmed: false, later: false)
     else
       current_user.items.update_all(confirmed: false)
     end
@@ -27,8 +30,17 @@ class ConfirmationsController < ApplicationController
 
   private
 
-  def items_sort
-    current_user.save_preference(:confirmation_sort, params[:sort]) if params[:sort].present?
-    current_user.preference_for(:confirmation_sort)
+  def save_items_sort_preference
+    return if params[:sort].blank?
+
+    current_user.save_preference(:confirmation_sort, params[:sort])
+  end
+
+  def ordered_items(items, sort)
+    if sort == 'name'
+      items.order(:name)
+    else
+      items.order('groups.position, items.position')
+    end
   end
 end
