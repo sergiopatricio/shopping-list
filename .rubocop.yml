@@ -32,6 +32,9 @@ Rails/I18nLocaleTexts:
 Metrics/MethodLength:
   Enabled: false
 
+Rails/ActionOrder:
+  Enabled: false
+
 Rails/SkipsModelValidations:
   Enabled: false
 
