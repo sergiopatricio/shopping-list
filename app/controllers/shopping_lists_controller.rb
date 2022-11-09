@@ -17,6 +17,6 @@ class ShoppingListsController < ApplicationController
     items.temporary.destroy_all
     items.update_all(total: 0, confirmed: false)
 
-    redirect_to shopping_list_path, status: :see_other, notice: 'Shopping list cleared.'
+    redirect_to shopping_list_path, status: :see_other
   end
 end

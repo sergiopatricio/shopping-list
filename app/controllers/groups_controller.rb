@@ -53,7 +53,7 @@ class GroupsController < ApplicationController
       groups.where(id: id).update_all(position: index)
     end
 
-    redirect_to shopping_list_path, notice: 'Groups order was updated.'
+    redirect_to shopping_list_path
   end
 
   def items

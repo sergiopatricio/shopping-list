@@ -25,7 +25,7 @@ class ConfirmationsController < ApplicationController
       current_user.items.update_all(confirmed: false)
     end
 
-    redirect_to confirmation_path, status: :see_other, notice: 'Confirmations cleared.'
+    redirect_to confirmation_path, status: :see_other
   end
 
   private

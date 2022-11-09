@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
       items.where(id: id).update_all(position: index)
     end
 
-    redirect_to shopping_list_path, notice: 'Items order was updated.'
+    redirect_to shopping_list_path
   end
 
   private
