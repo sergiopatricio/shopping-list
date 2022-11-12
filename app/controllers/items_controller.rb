@@ -19,10 +19,14 @@ class ItemsController < ApplicationController
     item.total = 1 if item.temporary?
 
     if item.save
-      render turbo_stream: turbo_stream.append("shopping-list-group-#{item.group_id}-items",
-                                               partial: 'shopping_lists/item',
-                                               locals: { item: item })
-
+      render turbo_stream: [
+        turbo_stream.append("shopping-list-group-#{item.group_id}-items",
+                            partial: 'shopping_lists/item',
+                            locals: { item: item }),
+        turbo_stream.append("shopping-list-group-#{item.group_id}-items",
+                            partial: 'shared/scroll_to',
+                            locals: { location: "shopping-list-item-#{item.id}" })
+      ]
     else
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'items/form',
@@ -54,7 +58,10 @@ class ItemsController < ApplicationController
           turbo_stream.remove("shopping-list-item-#{item.id}"),
           turbo_stream.append("shopping-list-group-#{item.group_id}-items",
                               partial: 'shopping_lists/item',
-                              locals: { item: item })
+                              locals: { item: item }),
+          turbo_stream.append("shopping-list-group-#{item.group_id}-items",
+                              partial: 'shared/scroll_to',
+                              locals: { location: "shopping-list-item-#{item.id}" })
         ]
       else
         render turbo_stream: turbo_stream.replace("shopping-list-item-#{item.id}",
