@@ -19,7 +19,12 @@ class GroupsController < ApplicationController
     group.position = (current_user.groups.maximum(:position) || 0) + 1
 
     if group.save
-      redirect_to shopping_list_path
+      render turbo_stream: [
+        turbo_stream.append('shopping-list', partial: 'shopping_lists/group', locals: { group: group }),
+        turbo_stream.append('shopping-list',
+                            partial: 'shared/scroll_to',
+                            locals: { location: "shopping-list-group-#{group.id}" })
+      ]
     else
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'groups/form',
@@ -30,9 +35,10 @@ class GroupsController < ApplicationController
 
   def update
     if group.update(group_params)
-      # TODO: create group partial to render just group
-      # also, on updates maybe just update the group header without the items
-      redirect_to shopping_list_path
+      render turbo_stream: turbo_stream.replace("shopping-list-group-#{group.id}",
+                                                partial: 'shopping_lists/group',
+                                                locals: { group: group })
+
     else
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'groups/form',
