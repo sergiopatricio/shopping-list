@@ -3,8 +3,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :validatable, :rememberable, :trackable
 
-  has_many :groups, dependent: :destroy
-  has_many :items, dependent: :destroy
+  belongs_to :account, dependent: :destroy
   has_one :preference, dependent: :destroy
 
   # enable devise "remember be" by default

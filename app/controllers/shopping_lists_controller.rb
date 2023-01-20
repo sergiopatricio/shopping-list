@@ -2,7 +2,7 @@
 
 class ShoppingListsController < ApplicationController
   def show
-    grouped_items = current_user.groups.includes(:items).order(:position)
+    grouped_items = current_account.groups.includes(:items).order(:position)
     render :show, locals: { grouped_items: grouped_items }
   end
 
@@ -10,7 +10,7 @@ class ShoppingListsController < ApplicationController
     confirmed = params[:confirmed] == 'true'
     group_id = params[:group_id]
 
-    items = current_user.items
+    items = current_account.items
     items = items.confirmed if confirmed
     items = items.where(group_id: group_id) if group_id
 

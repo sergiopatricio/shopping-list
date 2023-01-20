@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_20_174532) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_20_175517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
@@ -21,6 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_174532) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.boolean "active", default: true
+    t.bigint "account_id", null: false
+    t.index ["account_id", "name"], name: "index_groups_on_account_id_and_name", unique: true
+    t.index ["account_id"], name: "index_groups_on_account_id"
     t.index ["user_id", "name"], name: "index_groups_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
@@ -37,6 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_174532) do
     t.boolean "temporary", default: false
     t.string "url"
     t.boolean "later", default: false
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["group_id", "name"], name: "index_items_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_items_on_group_id"
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -61,6 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_174532) do
     t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.bigint "account_id", null: false
+    t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

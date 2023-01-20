@@ -4,7 +4,7 @@ class ConfirmationsController < ApplicationController
   before_action :save_items_sort_preference
 
   def show
-    items = current_user.items.to_buy.includes(:group)
+    items = current_account.items.to_buy.includes(:group)
     items_for_now = items.where(later: false)
     items_for_later = items.where(later: true)
     sort = current_user.preference_for(:confirmation_sort)
@@ -18,11 +18,11 @@ class ConfirmationsController < ApplicationController
 
   def destroy
     if params[:confirmed] == 'true'
-      items = current_user.items.confirmed
+      items = current_account.items.confirmed
       items.temporary.destroy_all
       items.update_all(total: 0, confirmed: false, later: false)
     else
-      current_user.items.update_all(confirmed: false)
+      current_account.items.update_all(confirmed: false)
     end
 
     redirect_to confirmation_path, status: :see_other

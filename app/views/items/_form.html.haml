@@ -3,7 +3,7 @@
 
   .form-group
     = form.label :group_id, class: 'form-label'
-    = form.collection_select :group_id, current_user.groups.order(:position).all, :id, :name, { prompt: true }, class: 'form-control', required: true
+    = form.collection_select :group_id, current_account.groups.order(:position).all, :id, :name, { prompt: true }, class: 'form-control', required: true
 
   .form-group
     = form.label :name, class: 'form-label'

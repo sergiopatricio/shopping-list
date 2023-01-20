@@ -22,6 +22,6 @@ class Confirmation::ItemsController < ApplicationController
   private
 
   def item
-    @item ||= current_user.items.find(params[:id])
+    @item ||= current_account.items.find(params[:id])
   end
 end

@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   include GroupOwnership
 
   def new
-    item = current_user.items.new(group_id: params[:group_id])
+    item = current_account.items.new(group_id: params[:group_id])
     check_group_ownership(item)
 
     item.temporary = true
@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = current_user.items.new(item_params)
+    item = current_account.items.new(item_params)
+    item.user_id = current_user.id # deprecated
     check_group_ownership(item)
 
     item.position = next_group_id_position(item.group_id)
@@ -83,7 +84,7 @@ class ItemsController < ApplicationController
 
   def sort
     ordered_ids = params[:order]&.split(',') || []
-    items = current_user.items
+    items = current_account.items
     ordered_ids.each_with_index do |id, index|
       items.where(id: id).update_all(position: index)
     end
@@ -94,7 +95,7 @@ class ItemsController < ApplicationController
   private
 
   def item
-    @item ||= current_user.items.find(params[:id])
+    @item ||= current_account.items.find(params[:id])
   end
 
   def item_params
@@ -102,6 +103,6 @@ class ItemsController < ApplicationController
   end
 
   def next_group_id_position(group_id)
-    (current_user.items.where(group_id: group_id).maximum(:position) || 0) + 1
+    (current_account.items.where(group_id: group_id).maximum(:position) || 0) + 1
   end
 end

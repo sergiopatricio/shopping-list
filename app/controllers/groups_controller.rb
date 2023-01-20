@@ -2,12 +2,12 @@
 
 class GroupsController < ApplicationController
   def index
-    groups = current_user.groups.order(:position)
+    groups = current_account.groups.order(:position)
     render :index, locals: { groups: groups }
   end
 
   def new
-    render :new, locals: { group: current_user.groups.new }
+    render :new, locals: { group: current_account.groups.new }
   end
 
   def edit
@@ -15,8 +15,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = current_user.groups.new(group_params)
-    group.position = (current_user.groups.maximum(:position) || 0) + 1
+    group = current_account.groups.new(group_params)
+    group.user_id = current_user.id # deprecated
+    group.position = (current_account.groups.maximum(:position) || 0) + 1
 
     if group.save
       render turbo_stream: [
@@ -54,7 +55,7 @@ class GroupsController < ApplicationController
 
   def sort
     ordered_ids = params[:order]&.split(',') || []
-    groups = current_user.groups
+    groups = current_account.groups
     ordered_ids.each_with_index do |id, index|
       groups.where(id: id).update_all(position: index)
     end
@@ -70,7 +71,7 @@ class GroupsController < ApplicationController
   private
 
   def group
-    @group ||= current_user.groups.find(params[:id])
+    @group ||= current_account.groups.find(params[:id])
   end
 
   def group_params
