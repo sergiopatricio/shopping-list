@@ -16,7 +16,6 @@ class GroupsController < ApplicationController
 
   def create
     group = current_account.groups.new(group_params)
-    group.user_id = current_user.id # deprecated
     group.position = (current_account.groups.maximum(:position) || 0) + 1
 
     if group.save

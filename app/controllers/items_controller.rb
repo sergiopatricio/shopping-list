@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
 
   def create
     item = current_account.items.new(item_params)
-    item.user_id = current_user.id # deprecated
     check_group_ownership(item)
 
     item.position = next_group_id_position(item.group_id)
