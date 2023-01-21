@@ -2,8 +2,8 @@
 
 require 'csv'
 
-class UserItemsCsv
-  def export(user_id)
+class AccountCsv
+  def export(account_id)
     CSV.generate(force_quotes: true, col_sep: ';') do |csv|
       csv << %w[
         group_name
@@ -16,7 +16,7 @@ class UserItemsCsv
         item_confirmed
       ]
 
-      Group.where(user_id: user_id).includes(:items).order(:position).each do |group|
+      Group.where(account_id: account_id).includes(:items).order(:position).each do |group|
         group.items.each do |item|
           csv << [
             group.name,
@@ -33,18 +33,18 @@ class UserItemsCsv
     end
   end
 
-  # This assumes the user doesn't have any data
-  def import(user_id, file_path)
+  # This assumes the account doesn't have any data
+  def import(account_id, file_path)
     group_by_name = {}
 
     CSV.foreach(file_path, headers: true, quote_char: '"', col_sep: ';') do |row|
       group_name = row['group_name']
-      group = (
-        group_by_name[group_name] ||= Group.create!(user_id: user_id, name: group_name, position: row['group_position'])
-      )
+      group_by_name[group_name] ||=
+        Group.create!(account_id: account_id, name: group_name, position: row['group_position'])
+      group = group_by_name[group_name]
 
       Item.create!(
-        user_id: user_id,
+        account_id: account_id,
         group: group,
         name: row['item_name'],
         url: row['item_url'],
