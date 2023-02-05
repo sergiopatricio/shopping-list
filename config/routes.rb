@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   namespace :shopping_list do
     resources :items, only: :update
   end
-  resource :confirmation, only: %i[show destroy]
+  resource :confirmation, only: %i[show destroy] do
+    member do
+      delete 'later', action: :destroy_later
+    end
+  end
   namespace :confirmation do
     resources :items, only: :update
   end

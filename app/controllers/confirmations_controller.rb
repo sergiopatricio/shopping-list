@@ -28,6 +28,11 @@ class ConfirmationsController < ApplicationController
     redirect_to confirmation_path, status: :see_other
   end
 
+  def destroy_later
+    current_account.items.update_all(later: false)
+    redirect_to confirmation_path, status: :see_other
+  end
+
   private
 
   def save_items_sort_preference

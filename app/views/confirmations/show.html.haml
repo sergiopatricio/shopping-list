@@ -21,7 +21,12 @@
       - items_for_now.each do |item|
         = render 'item', item: item
 
-    %h2.mt-4 Items for later
+    .d-flex.justify-content-between.mt-4
+      %h2 Items for later
+      .align-self-end.mb-1
+        = link_to 'Move all up', later_confirmation_path,
+                   data: { turbo_method: 'delete', turbo_confirm: 'Move all items up?' },
+                   class: 'action icon-medium icon-all-for-now'
     %ul.list-group#confirmation-later-items
       - items_for_later.each do |item|
         = render 'item', item: item
