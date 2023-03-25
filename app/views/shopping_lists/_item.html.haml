@@ -9,7 +9,7 @@
           = link_to 'Edit', edit_item_path(item), data: { turbo_frame: 'modal' }, class: 'dropdown-item'
           = link_to 'Delete', item_path(item), data: { turbo_method: 'delete', turbo_confirm: 'Delete the item?' }, class: 'dropdown-item'
           .dropdown-divider
-          = link_to 'Sort items', items_group_path(item.group), data: { turbo: 'false' }, class: 'dropdown-item'
+          = link_to 'Sort items', items_group_path(item.group), data: { turbo_frame: '_top' }, class: 'dropdown-item'
     .flex-grow-1.align-self-center.item-name
       = '(T)' if item.temporary?
       = item.name

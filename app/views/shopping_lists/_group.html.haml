@@ -15,8 +15,8 @@
         = link_to 'Edit', edit_group_path(group), data: { turbo_frame: 'modal' }, class: 'dropdown-item'
         = link_to 'Delete', group_path(group), data: { turbo_method: :delete, turbo_confirm: 'Delete the group?' }, class: 'dropdown-item'
         .dropdown-divider
-        = link_to 'Sort groups', groups_path, data: { turbo: 'false' }, class: 'dropdown-item'
-        = link_to 'Sort items', items_group_path(group), data: { turbo: 'false' }, class: 'dropdown-item'
+        = link_to 'Sort groups', groups_path, data: { turbo_frame: '_top' }, class: 'dropdown-item'
+        = link_to 'Sort items', items_group_path(group), data: { turbo_frame: '_top' }, class: 'dropdown-item'
     = group.name
 
   %ul.list-group{ id: "shopping-list-group-#{group.id}-items" }
