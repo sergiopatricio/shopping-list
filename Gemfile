@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.1'
 
 gem 'bootsnap', '~> 1.16.0', require: false
-gem 'devise', '~> 4.8.1'
+gem 'devise', '~> 4.9.0'
 gem 'hamlit', '~> 3.0.3'
 gem 'importmap-rails', '~> 1.1.5'
 gem 'pg', '~> 1.4.6'

@@ -2,7 +2,7 @@
 .user-edit
   = render 'shared/errors', errors: user.errors
 
-= form_with(model: user, data: { turbo: 'false' }, class: 'user-edit') do |form|
+= form_with(model: user, class: 'user-edit') do |form|
   .form-group
     = form.label :email, class: 'form-label'
     = form.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', required: true
@@ -10,7 +10,7 @@
   = form.submit 'Update', class: 'btn btn-primary'
 
 %h3.mt-5 Change password
-= form_with(model: user, url: update_password_user_path, data: { turbo: 'false' }, class: 'user-edit') do |form|
+= form_with(model: user, url: update_password_user_path, class: 'user-edit') do |form|
   .form-group
     = form.label :current_password, class: 'form-label'
     = form.password_field :current_password, autocomplete: 'current-password', class: 'form-control', required: true
