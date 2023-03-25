@@ -3,7 +3,18 @@
 class ShoppingListsController < ApplicationController
   def show
     grouped_items = current_account.groups.includes(:items).order(:position)
-    render :show, locals: { grouped_items: grouped_items }
+    if params[:search].present?
+      grouped_items =
+        grouped_items
+          .references(:items)
+          .where('unaccent(items.name) ILIKE unaccent(?)', "%#{params[:search]}%")
+    end
+
+    if turbo_frame_request?
+      render partial: 'groups', locals: { grouped_items: grouped_items }
+    else
+      render :show, locals: { grouped_items: grouped_items }
+    end
   end
 
   def destroy

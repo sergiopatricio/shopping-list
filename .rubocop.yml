@@ -17,6 +17,10 @@ Layout/LineLength:
   Exclude:
     - app/views/**/*
 
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  IndentationWidth: 2
+
 Metrics/AbcSize:
   Enabled: false
 

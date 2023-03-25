@@ -1,0 +1,6 @@
+= turbo_frame_tag 'shopping-list-groups' do
+  - grouped_items.each do |group|
+    = render 'group', group: group
+
+  - if params[:search].present? && grouped_items.empty?
+    .alert.alert-secondary.mb-5 Items not found.
