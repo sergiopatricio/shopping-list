@@ -13,9 +13,9 @@
       .btn-group
         - sorted_by_name = sort == 'name'
         = link_to confirmation_path(sort: 'group'), class: "btn #{sorted_by_name ? 'btn-outline-primary' : 'btn-primary'}" do
-          %span.icon-custom.icon-sort-group Sort by group
+          %span.icon-sort-group Sort by group
         = link_to confirmation_path(sort: 'name'), class: "btn #{sorted_by_name ? 'btn-primary' : 'btn-outline-primary'}" do
-          %span.icon-custom.icon-sort-name Sort by name
+          %span.icon-sort-name Sort by name
 
     %ul.list-group#confirmation-now-items
       - items_for_now.each do |item|
