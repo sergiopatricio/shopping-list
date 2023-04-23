@@ -6,11 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 gem 'bootsnap', '~> 1.16.0', require: false
-gem 'devise', '~> 4.9.0'
+gem 'devise', '~> 4.9.2'
 gem 'hamlit', '~> 3.0.3'
 gem 'importmap-rails', '~> 1.1.5'
 gem 'pg', '~> 1.4.6'
-gem 'puma', '~> 6.1.1'
+gem 'puma', '~> 6.2.2'
 gem 'rack-timeout', '~> 0.6.3'
 gem 'rails', '~> 7.0.4'
 gem 'redis', '~> 5.0.6'
@@ -27,10 +27,10 @@ end
 group :development do
   gem 'amazing_print', '~> 1.4.0'
   gem 'haml_lint', '~> 0.45.0', require: false
-  gem 'rubocop', '~> 1.48.1', require: false
-  gem 'rubocop-performance', '~> 1.16.0', require: false
-  gem 'rubocop-rails', '~> 2.18.0', require: false
-  gem 'rubocop-rspec', '~> 2.19.0', require: false
+  gem 'rubocop', '~> 1.50.2', require: false
+  gem 'rubocop-performance', '~> 1.17.1', require: false
+  gem 'rubocop-rails', '~> 2.19.1', require: false
+  gem 'rubocop-rspec', '~> 2.20.0', require: false
 end
 
 group :test do
