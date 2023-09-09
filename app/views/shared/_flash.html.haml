@@ -1,4 +1,5 @@
 - flash.each do |name, msg|
-  - if msg.present?
-    = tag.div class: flash_class(name) do
-      = msg
+  - next if msg.blank?
+
+  = tag.div class: flash_class(name) do
+    = msg

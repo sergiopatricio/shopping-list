@@ -2,6 +2,7 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-factory_bot
 
 AllCops:
   DisplayCopNames: true
