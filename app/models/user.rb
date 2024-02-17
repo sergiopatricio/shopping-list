@@ -20,6 +20,6 @@ class User < ApplicationRecord
   def save_preference(key, value)
     return unless Preference.active_preferences.include?(key)
 
-    (preference || build_preference).send("save_#{key}", value)
+    (preference || build_preference).send(:"save_#{key}", value)
   end
 end
