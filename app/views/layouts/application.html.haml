@@ -8,8 +8,8 @@
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup
         %ul.navbar-nav.ms-auto
-          %li.nav-item= link_to 'User details', edit_user_path, class: 'nav-link'
-          %li.nav-item= link_to 'Log out', destroy_user_session_path, data: { turbo_method: 'delete', turbo_frame: '_top' }, class: 'nav-link'
+          %li.nav-item.invisible= link_to 'User details', edit_user_path, class: 'nav-link'
+          %li.nav-item.invisible= link_to 'Log out', destroy_user_session_path, data: { turbo_method: 'delete', turbo_frame: '_top' }, class: 'nav-link'
 
   .container
     = render partial: 'shared/flash'
