@@ -4,3 +4,4 @@
 //= link bootstrap.bundle.min.js
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
+//= link unknown_file
