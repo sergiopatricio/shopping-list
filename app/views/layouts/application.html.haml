@@ -10,6 +10,16 @@
         %ul.navbar-nav.ms-auto
           %li.nav-item.invisible= link_to 'User details', edit_user_path, class: 'nav-link'
           %li.nav-item.invisible= link_to 'Log out', destroy_user_session_path, data: { turbo_method: 'delete', turbo_frame: '_top' }, class: 'nav-link'
+          %li.nav-item.dropdown
+            %button#bd-theme.btn.btn-link.nav-link.py-2.px-0.px-lg-2.dropdown-toggle{ type: 'button', data: { bs_toggle: 'dropdown', bs_display: 'static' }, aria: { 'expanded': 'false' } }
+              %span.my-1.theme-active
+            %ul.dropdown-menu.dropdown-menu-end
+              %li
+                %button.dropdown-item.d-flex.align-items-center{ data: { bs_theme_value: 'light' } }
+                  Light
+              %li
+                %button.dropdown-item.d-flex.align-items-center{ data: { bs_theme_value: 'dark' } }
+                  Dark
 
   .container
     = render partial: 'shared/flash'
