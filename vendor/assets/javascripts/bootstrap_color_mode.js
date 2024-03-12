@@ -16,7 +16,7 @@
       return storedTheme
     }
 
-    return 'dark';
+    return 'dark'
   }
 
   const setTheme = theme => {
@@ -43,8 +43,8 @@
 
     const activeTheme = document.querySelector('.theme-active')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-    const textOfActiveBtn = btnToActive.innerHTML;
-    activeTheme.innerHTML = textOfActiveBtn;
+    const textOfActiveBtn = btnToActive.innerHTML
+    activeTheme.innerHTML = textOfActiveBtn
 
     btnToActive.classList.add('active')
     btnToActive.setAttribute('aria-pressed', 'true')
@@ -61,7 +61,7 @@
     }
   })
 
-  window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('turbo:load', () => {
     showActiveTheme(getPreferredTheme())
 
     document.querySelectorAll('[data-bs-theme-value]')
