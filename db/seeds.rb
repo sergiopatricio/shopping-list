@@ -19,7 +19,7 @@ account.items.create!(group: group1, temporary: true, position: 7, name: 'Temp C
 account.items.create!(group: group2, position: 1, name: 'Item L', total: 10, confirmed: true)
 account.items.create!(group: group2, position: 2, name: 'Item D', total: 2)
 account.items.create!(group: group2, position: 3, name: 'Item P')
-account.items.create!(group: group2, temporary: true, position: 4, name: 'Temp I', total: 2)
+account.items.create!(group: group2, temporary: true, position: 4, name: 'Temp I', total: 2, later: true)
 
 account.items.create!(group: group3, position: 1, name: 'Item T')
 account.items.create!(group: group3, position: 2, name: 'Item E')
