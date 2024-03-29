@@ -29,7 +29,7 @@ group :development do
   gem 'haml_lint', '~> 0.57.0', require: false
   gem 'rubocop', '~> 1.62.1', require: false
   gem 'rubocop-performance', '~> 1.20.2', require: false
-  gem 'rubocop-rails', '~> 2.24.0', require: false
+  gem 'rubocop-rails', '~> 2.24.1', require: false
   gem 'rubocop-rspec', '~> 2.27.1', require: false
 end
 
