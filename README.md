@@ -1,6 +1,8 @@
 # Shopping list app
 This is a simple application to manage a shopping list with the usual things to buy.
 
+<img width="350" src="preview/preview1.png"/><img width="350" src="preview/preview2.png"/>
+
 ## Account
 Represents a shopping list account, and can be shared with multiple users (although each user can only be in one 
 account).
