@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class ConfirmationsController < ApplicationController
-  before_action :save_items_sort_preference
+  before_action :save_sort_configuration, only: :show
 
   def show
     items = current_account.items.to_buy.includes(:group)
     items_for_now = items.where(later: false)
     items_for_later = items.where(later: true)
-    sort = current_user.preference_for(:confirmation_sort)
+    sort = current_user.configuration.confirmation_sort
 
     render :show, locals: {
       sort: sort,
@@ -35,10 +35,11 @@ class ConfirmationsController < ApplicationController
 
   private
 
-  def save_items_sort_preference
+  def save_sort_configuration
     return if params[:sort].blank?
 
-    current_user.save_preference(:confirmation_sort, params[:sort])
+    # don't raise error on failure
+    current_user.configuration.update(confirmation_sort: params[:sort])
   end
 
   def ordered_items(items, sort)
