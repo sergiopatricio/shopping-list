@@ -5,6 +5,12 @@
 .nav-bar-brands {
   white-space: nowrap;
 }
+.navbar-brand {
+  color: var(--bs-navbar-color);
+}
+.navbar-brand.active {
+  color: var(--bs-navbar-brand-color);
+}
 
 .form-group {
   margin-bottom: 1rem;
