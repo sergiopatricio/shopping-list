@@ -46,8 +46,8 @@
   position: sticky;
   top: 3.5rem;
   z-index: 1;
-  border-bottom: 1px solid #aaa;
-  background-color: #eee;
+  background-color: var(--bs-dark-bg-subtle);
+  border-bottom: 1px solid var(--bs-tertiary-color);
   line-height: 2;
 }
 .shopping-list .icon-menu,
@@ -59,11 +59,11 @@
   font-size: 1.6rem;
 }
 .shopping-list .to-buy {
-  background-color: #ebf5eb;
+  background-color: var(--bs-secondary-bg);
 }
 
 .confirmations .confirmed {
-  background-color: #ebf5eb;
+  background-color: var(--bs-secondary-bg);
 }
 .confirmations .item-group {
   display: block;
