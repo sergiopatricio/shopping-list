@@ -23,10 +23,10 @@
   mask: url(<%= asset_path('plus-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #0d6efd; /* $primary */
+  background-color: var(--bs-primary);
 }
 .icon-add:hover {
-  background-color: #0b5ed7; /* shade-color($primary, 15%) */
+  background-color: #0b5ed7;
 }
 
 .icon-remove {
@@ -34,10 +34,10 @@
   mask: url(<%= asset_path('dash-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #ffc107; /* $warning */
+  background-color: var(--bs-warning);
 }
 .icon-remove:hover {
-  background-color: #d9a406; /* shade-color($warning, 15%) */
+  background-color: #ffca2c;
 }
 
 .icon-for-later {
@@ -45,10 +45,10 @@
   mask: url(<%= asset_path('arrow-down-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #6c757d; /* $secondary */
+  background-color: var(--bs-secondary);
 }
 .icon-for-later:hover {
-  background-color: #494f54;
+  background-color: #5c636a;
 }
 
 .icon-for-now {
@@ -56,10 +56,10 @@
   mask: url(<%= asset_path('arrow-up-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #6c757d; /* $secondary */
+  background-color: var(--bs-secondary);
 }
 .icon-for-now:hover {
-  background-color: #494f54;
+  background-color: #5c636a;
 }
 
 .icon-all-for-now {
@@ -67,10 +67,10 @@
   mask: url(<%= asset_path('arrow-up-square.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #6c757d; /* $secondary */
+  background-color: var(--bs-secondary);
 }
 .icon-all-for-now:hover {
-  background-color: #494f54;
+  background-color: #5c636a;
 }
 
 .icon-confirm {
@@ -78,10 +78,10 @@
   mask: url(<%= asset_path('check-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #0d6efd; /* $primary */
+  background-color: var(--bs-primary);
 }
 .icon-confirm:hover {
-  background-color: #0b5ed7; /* shade-color($primary, 15%) */
+  background-color: #0b5ed7;
 }
 
 .icon-unconfirm {
@@ -89,42 +89,51 @@
   mask: url(<%= asset_path('x-square-fill.svg') %>);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
-  background-color: #ffc107; /* $warning */
+  background-color: var(--bs-warning);
 }
 .icon-unconfirm:hover {
-  background-color: #d9a406; /* shade-color($warning, 15%) */
+  background-color: #ffca2c;
 }
 
 .icon-move {
+  -webkit-mask: url(<%= asset_path('justify.svg') %>);
+  mask: url(<%= asset_path('justify.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: var(--bs-body-color);
   line-height: 1.5rem;
   width: 2rem;
-  background: url(<%= asset_path('justify.svg') %>);
-  background-size: 100% 100%;
   cursor: move;
 }
 
 .icon-url {
-  background: url(<%= asset_path('box-arrow-in-up-right.svg') %>);
-  background-size: 100% 100%;
+  -webkit-mask: url(<%= asset_path('box-arrow-in-up-right.svg') %>);
+  mask: url(<%= asset_path('box-arrow-in-up-right.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: var(--bs-body-color);
 }
 
 .icon-menu {
-  background: url(<%= asset_path('three-dots-vertical.svg') %>);
-  background-size: 100% 100%;
+  -webkit-mask: url(<%= asset_path('three-dots-vertical.svg') %>);
+  mask: url(<%= asset_path('three-dots-vertical.svg') %>);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  background-color: var(--bs-body-color);
 }
 
 .icon-sort-name,
 .icon-sort-group {
   display: inline-block;
   text-indent: -9999px;
-  background-color: #0d6efd;
+  background-color: var(--bs-primary);
   width: 1.25rem;
 }
 .btn-primary .icon-sort-name,
 .btn-primary .icon-sort-group,
 .btn-outline-primary:hover .icon-sort-name,
 .btn-outline-primary:hover .icon-sort-group {
-  background-color: #fff;
+  background-color: var(--bs-body-bg);
 }
 .icon-sort-name {
   -webkit-mask: url(<%= asset_path('sort-alpha-down.svg') %>);
@@ -142,7 +151,7 @@
 .icon-back-to-top {
   text-indent: -9999px;
   background: url(<%= asset_path('chevron-up.svg') %>);
-  background-color: #ced4da;
+  background-color: var(--bs-gray-400);
   background-size: 100% 100%;
   position: fixed;
   bottom: 3rem;
