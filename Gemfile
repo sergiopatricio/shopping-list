@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.3.2'
 
+gem 'amazing_print', '~> 1.6.0'
 gem 'bootsnap', '~> 1.18.3', require: false
 gem 'devise', '~> 4.9.4'
 gem 'hamlit', '~> 3.0.3'
@@ -25,7 +26,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'amazing_print', '~> 1.6.0'
   gem 'haml_lint', '~> 0.58.0', require: false
   gem 'rubocop', '~> 1.64.1', require: false
   gem 'rubocop-performance', '~> 1.21.0', require: false
