@@ -1,5 +1,5 @@
 - content_for :content do
-  %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-3.sticky-top
+  %nav.navbar.navbar-expand-sm.mb-3.sticky-top
     .container
       .nav-bar-brands
         = link_to 'Shopping list', root_path, class: "navbar-brand#{request.path == '/' ? ' active' : nil}"
@@ -8,6 +8,15 @@
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup
         %ul.navbar-nav.ms-auto
+          %li.nav-item.dropdown
+            %a.nav-link.dropdown-toggle#bd-theme{ href: '#', data: { bs_toggle: 'dropdown' } } Theme
+            %ul.dropdown-menu
+              %li
+                %button.dropdown-item{ type: 'button', data: { bs_theme_value: 'light' } } Light
+              %li
+                %button.dropdown-item{ type: 'button', data: { bs_theme_value: 'dark' } } Dark
+              %li
+                %button.dropdown-item{ type: 'button', data: { bs_theme_value: 'auto' } } Auto
           %li.nav-item= link_to 'User details', edit_user_path, class: 'nav-link'
           %li.nav-item= link_to 'Log out', destroy_user_session_path, data: { turbo_method: 'delete', turbo_frame: '_top' }, class: 'nav-link'
 

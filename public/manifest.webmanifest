@@ -1,5 +1,6 @@
 {
   "background_color": "#FFFFFF",
+  "theme_color": "#052c65",
   "display": "standalone",
   "icons": [
     {
