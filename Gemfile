@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.2'
+ruby '3.3.4'
 
 gem 'amazing_print', '~> 1.6.0'
 gem 'bootsnap', '~> 1.18.3', require: false
