@@ -23,7 +23,7 @@ Bundler.require(*Rails.groups)
 module ShoppingList
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 7.2
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -35,8 +35,8 @@ module ShoppingList
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = 'Central Time (US & Canada)'
-    # config.eager_load_paths << Rails.root.join('extras')
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
 
     config.time_zone = 'UTC'
   end
