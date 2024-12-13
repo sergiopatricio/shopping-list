@@ -11,7 +11,7 @@ gem 'devise', '~> 4.9.4'
 gem 'hamlit', '~> 3.0.3'
 gem 'importmap-rails', '~> 2.0.3'
 gem 'pg', '~> 1.5.9'
-gem 'puma', '~> 6.4.3'
+gem 'puma', '~> 6.5.0'
 gem 'rack-timeout', '~> 0.7.0'
 gem 'rails', '~> 7.2.2'
 gem 'redis', '~> 5.3.0'
@@ -21,17 +21,17 @@ gem 'turbo-rails', '~> 2.0.11'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.4.4'
-  gem 'pry', '~> 0.14.2'
-  gem 'rspec-rails', '~> 7.0.1'
+  gem 'pry', '~> 0.15.0'
+  gem 'rspec-rails', '~> 7.1.0'
 end
 
 group :development do
   gem 'haml_lint', '~> 0.59.0', require: false
-  gem 'rubocop', '~> 1.68.0', require: false
+  gem 'rubocop', '~> 1.69.2', require: false
   gem 'rubocop-factory_bot', '~> 2.26.1', require: false
-  gem 'rubocop-performance', '~> 1.22.1', require: false
+  gem 'rubocop-performance', '~> 1.23.0', require: false
   gem 'rubocop-rails', '~> 2.27.0', require: false
-  gem 'rubocop-rspec', '~> 3.2.0', require: false
+  gem 'rubocop-rspec', '~> 3.3.0', require: false
   gem 'rubocop-rspec_rails', '~> 2.30.0', require: false
 end
 
