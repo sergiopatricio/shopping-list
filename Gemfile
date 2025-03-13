@@ -3,10 +3,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.5'
+ruby '3.4.2'
 
 gem 'amazing_print', '~> 1.7.2'
 gem 'bootsnap', '~> 1.18.4', require: false
+gem 'csv', '~> 3.3.2'
 gem 'devise', '~> 4.9.4'
 gem 'hamlit', '~> 3.0.3'
 gem 'importmap-rails', '~> 2.1.0'
