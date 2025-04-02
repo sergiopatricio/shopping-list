@@ -7,7 +7,7 @@ ruby '3.4.2'
 
 gem 'amazing_print', '~> 1.7.2'
 gem 'bootsnap', '~> 1.18.4', require: false
-gem 'csv', '~> 3.3.2'
+gem 'csv', '~> 3.3.3'
 gem 'devise', '~> 4.9.4'
 gem 'hamlit', '~> 3.0.3'
 gem 'importmap-rails', '~> 2.1.0'
@@ -27,11 +27,11 @@ group :development, :test do
 end
 
 group :development do
-  gem 'haml_lint', '~> 0.61.0', require: false
-  gem 'rubocop', '~> 1.74.0', require: false
+  gem 'haml_lint', '~> 0.61.1', require: false
+  gem 'rubocop', '~> 1.75.1', require: false
   gem 'rubocop-factory_bot', '~> 2.27.1', require: false
-  gem 'rubocop-performance', '~> 1.24.0', require: false
-  gem 'rubocop-rails', '~> 2.30.3', require: false
+  gem 'rubocop-performance', '~> 1.25.0', require: false
+  gem 'rubocop-rails', '~> 2.31.0', require: false
   gem 'rubocop-rspec', '~> 3.5.0', require: false
   gem 'rubocop-rspec_rails', '~> 2.31.0', require: false
 end
