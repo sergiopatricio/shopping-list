@@ -98,7 +98,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:group_id, :name, :temporary, :url)
+    params.expect(item: %i[group_id name temporary url])
   end
 
   def next_group_id_position(group_id)
