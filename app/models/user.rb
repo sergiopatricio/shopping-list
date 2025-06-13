@@ -6,11 +6,6 @@ class User < ApplicationRecord
   belongs_to :account
   has_one :user_configuration, dependent: :destroy
 
-  # enable devise "remember be" by default
-  def remember_me
-    true
-  end
-
   def configuration
     user_configuration || create_user_configuration!
   end

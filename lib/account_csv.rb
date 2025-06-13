@@ -55,6 +55,6 @@ class AccountCsv
       )
     end
 
-    true
+    nil
   end
 end

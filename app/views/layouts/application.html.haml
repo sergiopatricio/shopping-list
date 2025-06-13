@@ -2,8 +2,8 @@
   %nav.navbar.navbar-expand-sm.mb-3.sticky-top
     .container
       .nav-bar-brands
-        = link_to 'Shopping list', root_path, class: "navbar-brand#{request.path == '/' ? ' active' : nil}"
-        = link_to 'Confirmation', confirmation_path, class: "navbar-brand#{request.path == '/confirmation' ? ' active' : nil}"
+        = link_to 'Shopping list', root_path, class: "navbar-brand#{' active' if request.path == '/'}"
+        = link_to 'Confirmation', confirmation_path, class: "navbar-brand#{' active' if request.path == '/confirmation'}"
       %button.navbar-toggler{ type: 'button', data: { bs_toggle: 'collapse', bs_target: '#navbar-nav-alt-markup' }, aria: { controls: 'navbar-nav-alt-markup', expanded: 'false', label: 'Toggle navigation' } }
         %span.navbar-toggler-icon
       .navbar-collapse.collapse#navbar-nav-alt-markup

@@ -10,4 +10,5 @@
     = form.label :password, class: 'form-label'
     = form.password_field :password, autocomplete: 'current-password', class: 'form-control', required: true
 
+  = form.hidden_field :remember_me, value: '1'
   = form.submit 'Log in', class: 'btn btn-primary'
