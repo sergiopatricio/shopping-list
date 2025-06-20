@@ -1,6 +1,6 @@
 # Set app name here or use -a
 # app = 'app_name'
-primary_region = 'mad'
+primary_region = 'cdg'
 console_command = '/rails/bin/rails console'
 
 [http_service]
