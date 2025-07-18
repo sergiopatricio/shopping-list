@@ -15,7 +15,7 @@ gem 'pg', '~> 1.5.9'
 gem 'puma', '~> 6.6.0'
 gem 'rack-timeout', '~> 0.7.0'
 gem 'rails', '~> 8.0.2'
-gem 'redis', '~> 5.4.0'
+gem 'redis', '~> 5.4.1'
 gem 'sprockets-rails', '~> 3.5.2'
 gem 'stimulus-rails', '~> 1.3.4'
 gem 'turbo-rails', '~> 2.0.16'
@@ -23,12 +23,12 @@ gem 'turbo-rails', '~> 2.0.16'
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.5.0'
   gem 'pry', '~> 0.15.2'
-  gem 'rspec-rails', '~> 8.0.0'
+  gem 'rspec-rails', '~> 8.0.1'
 end
 
 group :development do
-  gem 'haml_lint', '~> 0.62.0', require: false
-  gem 'rubocop', '~> 1.76.1', require: false
+  gem 'haml_lint', '~> 0.64.0', require: false
+  gem 'rubocop', '~> 1.78.0', require: false
   gem 'rubocop-factory_bot', '~> 2.27.1', require: false
   gem 'rubocop-performance', '~> 1.25.0', require: false
   gem 'rubocop-rails', '~> 2.32.0', require: false
