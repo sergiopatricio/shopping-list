@@ -16,15 +16,21 @@ class GroupsController < ApplicationController
 
   def create
     group = current_account.groups.new(group_params)
-    group.position = (current_account.groups.maximum(:position) || 0) + 1
+    last_position = current_account.groups.maximum(:position)
+    group.position = (last_position || 0) + 1
 
     if group.save
-      render turbo_stream: [
-        turbo_stream.append('shopping-list', partial: 'shopping_lists/group', locals: { group: group }),
-        turbo_stream.append('shopping-list',
-                            partial: 'shared/scroll_to',
-                            locals: { location: "shopping-list-group-#{group.id}" })
-      ]
+      if last_position.nil?
+        # Render the full page since the group list is not there yet
+        redirect_to shopping_list_path
+      else
+        render turbo_stream: [
+          turbo_stream.append('shopping-list', partial: 'shopping_lists/group', locals: { group: group }),
+          turbo_stream.append('shopping-list',
+                              partial: 'shared/scroll_to',
+                              locals: { location: "shopping-list-group-#{group.id}" })
+        ]
+      end
     else
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'groups/form',
