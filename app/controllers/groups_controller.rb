@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'groups/form',
                                                locals: { group: group }),
-             status: :unprocessable_entity
+             status: :unprocessable_content
     end
   end
 
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'groups/form',
                                                locals: { group: group }),
-             status: :unprocessable_entity
+             status: :unprocessable_content
     end
   end
 

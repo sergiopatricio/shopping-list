@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_04_07_100752) do
+ActiveRecord::Schema[8.1].define(version: 2024_04_07_100752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "unaccent"
@@ -21,53 +21,53 @@ ActiveRecord::Schema[8.0].define(version: 2024_04_07_100752) do
   end
 
   create_table "groups", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
     t.string "name", null: false
     t.integer "position"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "active", default: true
-    t.bigint "account_id", null: false
     t.index ["account_id", "name"], name: "index_groups_on_account_id_and_name", unique: true
     t.index ["account_id"], name: "index_groups_on_account_id"
   end
 
   create_table "items", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.boolean "confirmed", default: false
+    t.datetime "created_at", null: false
     t.bigint "group_id", null: false
+    t.boolean "later", default: false
     t.string "name", null: false
     t.integer "position"
-    t.integer "total", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "confirmed", default: false
     t.boolean "temporary", default: false
+    t.integer "total", default: 0
+    t.datetime "updated_at", null: false
     t.string "url"
-    t.boolean "later", default: false
-    t.bigint "account_id", null: false
     t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["group_id", "name"], name: "index_items_on_group_id_and_name", unique: true
     t.index ["group_id"], name: "index_items_on_group_id"
   end
 
   create_table "user_configurations", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.string "confirmation_sort", default: "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_user_configurations_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.inet "current_sign_in_ip"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.datetime "remember_created_at", precision: nil
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
     t.datetime "last_sign_in_at", precision: nil
-    t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.bigint "account_id", null: false
+    t.datetime "remember_created_at", precision: nil
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end

@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'items/form',
                                                locals: { item: item }),
-             status: :unprocessable_entity
+             status: :unprocessable_content
     end
   end
 
@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
       render turbo_stream: turbo_stream.update('modal-body-content',
                                                partial: 'items/form',
                                                locals: { item: item }),
-             status: :unprocessable_entity
+             status: :unprocessable_content
     end
   end
 
