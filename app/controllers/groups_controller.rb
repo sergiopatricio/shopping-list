@@ -76,7 +76,7 @@ class GroupsController < ApplicationController
   private
 
   def group
-    @group ||= current_account.groups.find(params[:id])
+    @group ||= current_account.groups.find(params.expect(:id))
   end
 
   def group_params

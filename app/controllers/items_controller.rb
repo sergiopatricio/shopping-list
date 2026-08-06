@@ -94,7 +94,7 @@ class ItemsController < ApplicationController
   private
 
   def item
-    @item ||= current_account.items.find(params[:id])
+    @item ||= current_account.items.find(params.expect(:id))
   end
 
   def item_params
